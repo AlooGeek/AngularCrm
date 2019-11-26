@@ -6,12 +6,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './home/home.module#HomeModule'
+
   },
   {
     path: 'billing',
     loadChildren: './billing/billing.module#BillingModule'
-
-  },
 
 
 ];
