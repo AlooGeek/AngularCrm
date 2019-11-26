@@ -1,11 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProducttComponent } from './dashboard/productt/productt.component';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
+  
+
 ];
 
 @NgModule({
