@@ -27,9 +27,21 @@
               "src/assets/css/icon-font.min.css"
             ],
             "scripts": [
+              "src/assets/dashboard/assets/vendor/jquery/jquery-3.3.1.min.js",
+              "src/assets/dashboard/assets/vendor/slimscroll/jquery.slimscroll.js",
+              "src/assets/dashboard/assets/vendor/charts/sparkline/jquery.sparkline.js",
               "src/assets/js/vendor/modernizr-2.8.3.min.js",
               "src/assets/js/plugins.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main.js",
+              "src/assets/dashboard/assets/vendor/bootstrap/js/bootstrap.bundle.js",
+              "src/assets/dashboard/assets/libs/js/main-js.js",
+              "src/assets/dashboard/assets/vendor/charts/chartist-bundle/chartist.min.js",
+              "src/assets/dashboard/assets/vendor/charts/morris-bundle/raphael.min.js",
+              "src/assets/dashboard/assets/vendor/charts/morris-bundle/morris.js",
+              "src/assets/dashboard/assets/vendor/charts/c3charts/c3.min.js",
+              "src/assets/dashboard/assets/vendor/charts/c3charts/d3-5.4.0.min.js",
+              "src/assets/dashboard/assets/vendor/charts/c3charts/C3chartjs.js",
+              "src/assets/dashboard/assets/libs/js/dashboard-ecommerce.js"
 
             ],
             "es5BrowserSupport": true
