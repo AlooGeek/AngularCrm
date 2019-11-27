@@ -21,12 +21,7 @@ const routes: Routes = [
         loadChildren: './billing/billing.module#BillingModule'
       }
     ]
-  },
-  {
-    path: 'billing',
-    loadChildren: './billing/billing.module#BillingModule'
-
-
+  }
 ];
 
 @NgModule({

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/models/user';
 import { ApiService } from 'src/app/core/services/api.service';
-import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +15,6 @@ export class LoginformComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private authService: AuthenticationService,
     private router:Router
   ) {}
 
