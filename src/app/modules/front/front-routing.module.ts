@@ -22,6 +22,9 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'billing',
+    loadChildren: './billing/billing.module#BillingModule'
 
 
 ];
