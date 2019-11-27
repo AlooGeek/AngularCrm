@@ -10,10 +10,6 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './modules/front/front.module#FrontModule'
   },
-  {
-    path: 'dashboard',
-    loadChildren: './modules/back/back.module#BackModule'
-  },
 ];
 
 @NgModule({
