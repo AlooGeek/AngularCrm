@@ -15,6 +15,8 @@ const routes: Routes = [
 ]
 
 },
+{path:'doc' ,
+   loadChildren : './document/document.module#DocumentModule' },
   
 ];
 
