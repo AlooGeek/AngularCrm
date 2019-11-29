@@ -6,6 +6,10 @@ const routes: Routes = [
     path: '',
     loadChildren: './modules/front/front.module#FrontModule'
   },
+  {
+    path: 'admin',
+    loadChildren: './modules/back/back.module#BackModule'
+  }
 ];
 
 @NgModule({
