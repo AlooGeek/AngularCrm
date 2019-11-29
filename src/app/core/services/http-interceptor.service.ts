@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpInterceptorService {  
+export class HttpInterceptorService implements HttpInterceptor {  
 
   constructor(private router:Router) { }
 
@@ -18,20 +18,23 @@ export class HttpInterceptorService {
 
     //If storage contains a user logged in get the request and put authorization 
     //header in it
-    if (sessionStorage.getItem('username') && sessionStorage.getItem('basicauth')) {
+    console.log('yazebbi');
+    if (localStorage.getItem('username') && localStorage.getItem('basicauth')) {
       req = req.clone({
         setHeaders: {
-          Authorization: sessionStorage.getItem('basicauth')
+          Authorization: localStorage.getItem('basicauth')
         }
       })
-    }    
+    }   
+    
 
     return next.handle(req).pipe(
-      //if error is present in the response header redirect to error page      
+      //if error is present in the response header redirect to error page    
+      /*  
       catchError((error: HttpErrorResponse) => {
         this.router.navigate(['/error',error.status]);
         return throwError(error);
-      }),
+      }),*/
 
       //this will hide the loader when the response from the server has arrived
       //finalize(()=>this.loaderService.hide())

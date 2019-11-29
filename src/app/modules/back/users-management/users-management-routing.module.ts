@@ -6,7 +6,7 @@ import { ClaimsComponent } from './claims/claims.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'users',
     component:UsersComponent,
   },
   {

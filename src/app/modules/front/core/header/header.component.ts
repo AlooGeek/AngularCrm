@@ -9,11 +9,16 @@ export class HeaderComponent implements OnInit {
 
   //this variable will be used to display the user's username in the top right corner
   //of the header
-  username:string=sessionStorage.getItem('username');
+  username:string=localStorage.getItem('username');
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onLogOut(){
+    localStorage.clear();
+    location.reload();
   }
 
 }

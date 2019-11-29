@@ -37,6 +37,14 @@ export class ApiService {
       .put(BASE_URL + path, JSON.stringify(body), this.httpOptions)
       .pipe(catchError(this.formatErrors));
   }
+
+  public delete(path: string, body: object = {}): Observable<any> {
+    return this.httpClient
+      .delete(BASE_URL + path, this.httpOptions)
+      .pipe(catchError(this.formatErrors));
+  }
+
+  
   
   public formatErrors(error: any): Observable<any> {
     return throwError(error.status);

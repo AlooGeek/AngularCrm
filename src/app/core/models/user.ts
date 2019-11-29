@@ -15,5 +15,5 @@ export class User {
 	lastname:string;
 	cin: string;
 	birthDate:Date;
-	type: string;
+	roleRoleName:string;
 }

@@ -41,6 +41,7 @@
                   <!-- Header Account Links Start -->
                   <div class="header-account-links">
                       <a *ngIf="username != null" href="#"><i class="icofont icofont-user-alt-7"></i> <span>{{username}}</span></a>
+                      <button (click)="onLogOut()">log out</button>
                       <div *ngIf="username == null">
                           <button id="dropdownMenuOffset" data-toggle="dropdown" aria-expanded="false"
                               aria-haspopup="true"><i class="icofont icofont-login d-none"></i>

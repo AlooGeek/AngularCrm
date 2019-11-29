@@ -23,10 +23,15 @@ export class LoginformComponent implements OnInit {
   onSubmit(form) {
     this.api.post("/user/authenticate", this.user).subscribe(data => {
       if (data != null) {
-        let authString = data.username + ":" + data.passwd;
-        sessionStorage.setItem("username", data.username);
-        sessionStorage.setItem("basicauth", authString);
-        window.location.reload();
+        console.log(data);
+        let authString = data.username + ":" + data.password;
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("role",data.roleRoleName);
+        localStorage.setItem("basicauth", btoa(authString));
+        console.log(localStorage.getItem('basicauth'));
+        if(data.roleRoleName=='ROLE_ADMIN'){
+          this.router.navigateByUrl('/admin');
+        }
       }
       else this.errorMessage='username or password are incorrect';
     });
