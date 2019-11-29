@@ -17,6 +17,7 @@
                             <div class="col-12 mb-30"><input type="text" placeholder="Type your username " name="username" [(ngModel)]="user.username"></div>
                             <div class="col-12 mb-20"><input type="password" placeholder="Enter your passward" name="passwd" [(ngModel)]="user.password"></div>
                             <div class="col-12 mb-15">
+                                <label *ngIf="errorMessage != null" for=""><small>{{errorMessage}}</small></label>
                                 
                                 
                                 
