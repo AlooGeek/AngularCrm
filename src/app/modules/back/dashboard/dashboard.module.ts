@@ -5,13 +5,18 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ProducttComponent } from './productt/productt.component';
 import { DashboardCoreComponent } from './dashboard-core/dashboard-core.component';
+import {FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [DashboardComponent,ProducttComponent, DashboardCoreComponent],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+	FormsModule,
+    ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class DashboardModule { }
