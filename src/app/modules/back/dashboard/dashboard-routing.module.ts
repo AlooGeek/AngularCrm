@@ -10,8 +10,8 @@ const routes: Routes = [
   
   {path: '',component: DashboardComponent , 
   children:[ {path:'', component:DashboardCoreComponent},
-             {path:'product', component:ProducttComponent}
-			  {path:'discount', component:DiscountComponent},
+             {path:'product', component:ProducttComponent},
+			      {path:'discount', component:DiscountComponent},
              {path:'offer', component:OfferComponent},
              {path:'pack', component:PackComponent}
 				

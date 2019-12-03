@@ -7,10 +7,13 @@ import { ProducttComponent } from './productt/productt.component';
 import { DashboardCoreComponent } from './dashboard-core/dashboard-core.component';
 import {FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DiscountComponent } from './discount/discount.component';
+import { OfferComponent } from './offer/offer.component';
+import { PackComponent } from './pack/pack.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent,ProducttComponent, DashboardCoreComponent],
+  declarations: [DashboardComponent,ProducttComponent, DashboardCoreComponent, DiscountComponent, OfferComponent, PackComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

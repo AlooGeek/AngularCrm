@@ -6,13 +6,7 @@ import { BackComponent } from "./back.component";
 const routes: Routes = [
   {
     path: '',
-    component: BackComponent,
-    children: [      
-      {
-        path: '',
-        loadChildren: "./users-management/users-management.module#UsersManagementModule"
-      },
-    ]
+    loadChildren: './dashboard/dashboard.module#DashboardModule'
   }
 ];
 
