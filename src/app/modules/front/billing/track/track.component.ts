@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/core/services/api.service';
+import { Document } from 'src/app/core/models/document';
 
 @Component({
   selector: 'app-track',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackComponent implements OnInit {
 
-  constructor() { }
+  doc = new Document();
+  res:string;
+  constructor(private api:ApiService) { }
 
   ngOnInit() {
   }
 
+  track(id){
+    this.api.post("/Document/track?id="+id).subscribe(
+      data => {
+        location.reload();
+        return this.res = data;
+      }
+    );
+
+
+  }
 }

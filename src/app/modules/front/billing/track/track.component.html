@@ -99,14 +99,13 @@
               
               <div class="col-lg-6 col-md-7 col-12 mb-40">
                   <div class="track-order-form">
-                      <form action="#">
+                      <form #trackForm (ngSubmit)="track(id)" >
                           <label for="order_id">Order ID</label>
-                          <input type="text" id="order_id" placeholder="Find it in your order confirmation email">
-                          <label for="billing_email">Billing Email Address</label>
-                          <input type="email" id="billing_email" placeholder="Email you used during checkout">
-                          
-                          <input type="submit" value="Track Order">
+                          <input type="text" name="order_id" [(ngModel)]="id" placeholder="Find it in your order confirmation email">
+                          <input type="submit"  value="Track Order">
                       </form>
+                      <label for="res">Result</label>
+                          <input type="text" id="res" placeholder="Result">
                   </div>
               </div>
               
