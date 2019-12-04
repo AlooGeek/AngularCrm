@@ -10,16 +10,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DiscountComponent } from './discount/discount.component';
 import { OfferComponent } from './offer/offer.component';
 import { PackComponent } from './pack/pack.component';
+import { StoreComponent } from './store/store.component';
+import { CategoryComponent } from './category/category.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
-  declarations: [DashboardComponent,ProducttComponent, DashboardCoreComponent, DiscountComponent, OfferComponent, PackComponent],
+  declarations: [DashboardComponent,ProducttComponent, DashboardCoreComponent, DiscountComponent, OfferComponent, PackComponent,StoreComponent,CategoryComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
 	FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCb7JUS-ZKpLY7FYFuKW4eAMoStiGsaroY',
+      libraries: ['places']
+    })
   ]
 })
 export class DashboardModule { }
