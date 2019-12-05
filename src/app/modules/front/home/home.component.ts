@@ -35,4 +35,6 @@ export class HomeComponent implements OnInit {
   getAllDiscounts(){
     this.api.get("/discount").subscribe(res=>this.listdiscount=res);
   }
+
+  
 }

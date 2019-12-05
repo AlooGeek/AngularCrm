@@ -5,7 +5,7 @@ import { BillingRoutingModule } from './billing-routing.module';
 import { TrackComponent } from './track/track.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { BillingComponent } from './billing.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TrackComponent,CheckoutComponent,BillingComponent],
@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     BillingRoutingModule,
     FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class BillingModule { }

@@ -323,7 +323,15 @@
                                      </div>
                                      
                                  </div>
-                                 
+                              
+                                 <div class="col-md-6 col-12 mb-20">
+                                        <form [formGroup]="couponForm">
+                                    <label>Coupon Code</label>
+                                    <input type="text" placeholder="Coupon" formControlName="coupon">
+                                    <button (click)="verifyCoupon()" class="place-order">Verify coupon</button>
+                                </form>
+                                </div>
+                           
                                  <button class="place-order">Place order</button>
                                  
                              </div>
