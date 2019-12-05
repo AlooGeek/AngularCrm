@@ -6,14 +6,18 @@ import { ProducttComponent } from './productt/productt.component';
 import { DiscountComponent } from './discount/discount.component';
 import { OfferComponent } from './offer/offer.component';
 import { PackComponent } from './pack/pack.component';
+import { CategoryComponent } from './category/category.component';
+import { StoreComponent } from './store/store.component';
 const routes: Routes = [
   
   {path: '',component: DashboardComponent , 
   children:[ {path:'', component:DashboardCoreComponent},
              {path:'product', component:ProducttComponent},
-			      {path:'discount', component:DiscountComponent},
+			       {path:'discount', component:DiscountComponent},
              {path:'offer', component:OfferComponent},
-             {path:'pack', component:PackComponent}
+             {path:'pack', component:PackComponent},
+             {path:'category', component:CategoryComponent},
+             {path:'store', component:StoreComponent},
 				
 ]
 

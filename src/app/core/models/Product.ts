@@ -1,13 +1,16 @@
+import { Category } from './Category';
+
 export class product {
     
-     id : number;
-	 label: String ;
-	 ImageUrl :String ;
-	 unitPrice: any ;
-	 qte : number;
-	 tva :number;
-	 newprice :any;
-	 disponible : number;
+    public id : number;
+	public label: String ;
+	public imageUrl : any ;
+	public unitPrice: any ;
+	public qte : any;
+	public tva :any;
+	public newprice :any;
+	public disponible : number;
+	public category : Category;
 
 
 }
