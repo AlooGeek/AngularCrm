@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { product } from 'src/app/core/models/Product';
+import { ExcelService } from 'src/app/core/services/excel.service';
 
 @Component({
   selector: 'app-discount',
@@ -59,7 +60,7 @@ product:product;
   listProduct:product[];
 
 
-  constructor(private api: ApiService,private modalService: NgbModal) { }
+  constructor(private api: ApiService,private modalService: NgbModal,private excelService:ExcelService) { }
 
   ngOnInit() {
     this.getAllDiscounts();
@@ -171,6 +172,10 @@ product:product;
     // this.SelectedDiscount=this.listdiscount[i];
 
     this.api.put("/product/"+idproduit+"/"+this.productaffectForm.controls.discount.value,this.product).subscribe();
+  }
+
+  download(){
+    this.excelService.downloadFile(this.listdiscount, 'Discount');
   }
 
 
