@@ -14,16 +14,20 @@ export class TrackComponent implements OnInit {
   constructor(private api:ApiService) { }
 
   ngOnInit() {
+    this.res;
   }
+
 
   track(id){
     this.api.post("/Document/track?id="+id).subscribe(
       data => {
-        location.reload();
-        return this.res = data;
+      this.res=data["statusres"];
       }
     );
 
+  }
+
+
 
   }
-}
+

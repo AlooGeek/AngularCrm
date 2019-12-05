@@ -305,42 +305,143 @@ John Abraham</h5>
                         <!-- ============================================================== -->
                         <!-- basic form  -->
                         <!-- ============================================================== -->
+                                
+                                  
                         <div class="row">
-                        <div class=" col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12" >
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Add Document</h3>
-                                    <p>desc</p>
-                                </div>
-                                <div class="card">
-                                   <div class="card-header d-flex">
-                                        <h4 class="card-header-title">Document</h4>
-                                        <div class="toolbar ml-auto">
-                                            <a href="#" class="btn btn-primary btn-sm ">Excel</a>
-                                            <a href="#" class="btn btn-light btn-sm">PDF</a>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="#list">
+
+                                    <div class="section-block" id="basicform">
+                                                <h3 class="section-title">Document</h3>
+
+                                            </div>
+                                    <div class="card">
+                                       
+                                        <div class="card-header d-flex">
+                                                <h4 class="card-header-title">Document List</h4>
+                                                <div class="toolbar ml-auto">
+                                                    <a href="#" style="margin-left: 8px;background-color: #8fd19e;border-color: #8fd19e;" class="btn btn-primary btn-sm ">Excel</a>
+                                                    <a href="#" style="margin-left: 8px;" class="btn btn-light btn-sm">PDF</a>
+                                                    <button style="margin-left: 8px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal">Add</button>
+
+                                                </div>
                                         </div>
-                                            
+                                        <div class="card-body">
+
+                                            <table class="table" id="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Total HT</th>
+                                                        <th scope="col">Total TTC</th>
+                                                        <th scope="col">Total</th>
+                                                        <th scope="col">Date</th>
+                                                        <th scope="col">Type</th>
+                                                        <th scope="col">User</th>
+                                                        <th scope="col">State</th>
+                                                        <th scope="col">Reference</th>
+
+                                                        <th scope="col"> Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <ng-container *ngFor='let doc of docs'>
+        
+                                                <tbody>
+                                                    
+                                                    <tr *ngIf="doc.type=='quote'" class="table-secondary" >
+                                                        <th scope="row"> {{ doc.id}} </th>
+                                                        <td> {{ doc.total_ht}} </td>
+                                                        <td> {{ doc.total_ttc}} </td>
+                                                        <td> {{ doc.total}} </td>
+                                                        <td> {{ doc.date}} </td>
+                                                        <td> {{ doc.type}} </td>
+                                                        <td> {{ doc.user}} </td>
+                                                        <td> {{ doc.state}} </td>
+                                                        <td> {{ doc.id_commande}} </td>
+
+                                                        <td> 
+                                                            <button style="height: 40px;width: auto;margin-left: 10px;background-color: #f5d730;" class="btn btn-primary"  (click)="validate(doc.id,1,10)">Validate</button> 
+                                                            <button style="height: 40px;width:auto;margin-left: 10px;" class="btn btn-secondary" data-toggle="modal" data-target="#modal" (click)="edit(doc)">edit</button> 
+                                                            <button  style="height: 40px;width: auto;margin-left: 10px;" class="btn btn-danger" (click)="delete(doc.id)">delete</button> 
+                                                        </td>
+                                                        <p>{{message}}</p>
+                                                        
+        
+                                                    </tr>
+                                                    <tr *ngIf="doc.type=='bill'" class="table-success" >
+                                                            <th scope="row"> {{ doc.id}} </th>
+                                                            <td> {{ doc.total_ht}} </td>
+                                                            <td> {{ doc.total_ttc}} </td>
+                                                            <td> {{ doc.total}} </td>
+                                                            <td> {{ doc.date}} </td>
+                                                            <td> {{ doc.type}} </td>
+                                                            <td> {{ doc.user}} </td>
+                                                            <td> {{ doc.state}} </td>
+                                                            <td> {{ doc.id_commande}} </td>
+    
+                                                            <td> 
+                                                                <button style="height: 40px;width: auto;margin-left: 10px;" class="btn btn-primary"  (click)="validate(doc.id,1,10)">Validate</button> 
+                                                                <button style="height: 40px;width:auto;margin-left: 10px;" class="btn btn-secondary" data-toggle="modal" data-target="#modal" (click)="edit(doc)">edit</button> 
+                                                                <button  style="height: 40px;width: auto;margin-left: 10px;" class="btn btn-danger" (click)="delete(doc.id)">delete</button> 
+                                                            </td>
+                                                            <p>{{message}}</p>
+                                                            
+            
+                                                        </tr>
+                                                        <tr *ngIf="doc.type=='command'" class="table-primary" >
+                                                                <th scope="row"> {{ doc.id}} </th>
+                                                                <td> {{ doc.total_ht}} </td>
+                                                                <td> {{ doc.total_ttc}} </td>
+                                                                <td> {{ doc.total}} </td>
+                                                                <td> {{ doc.date}} </td>
+                                                                <td> {{ doc.type}} </td>
+                                                                <td> {{ doc.user}} </td>
+                                                                <td> {{ doc.state}} </td>
+                                                                <td> {{ doc.id_commande}} </td>
+        
+                                                                <td> 
+                                                                    <button style="height: 40px;width: auto;margin-left: 10px;" class="btn btn-primary" data-toggle="modal" data-target="#modal" (click)="validate(doc.id,1,10)">Validate</button> 
+                                                                    <button style="height: 40px;width:auto;margin-left: 10px;" class="btn btn-secondary" data-toggle="modal" data-target="#modal" (click)="edit(doc)">edit</button> 
+                                                                    <button  style="height: 40px;width: auto;margin-left: 10px;" class="btn btn-danger" (click)="delete(doc.id)">delete</button> 
+                                                                </td>
+                                                                <p>{{message}}</p>
+                                                                
+                
+                                                            </tr>
+                                                
+                                                    
+                                                       
+                                                </tbody>
+                                                </ng-container>
+                                            </table>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
+                                  </div>
+                    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
                                         <form #myForm="ngForm" (ngSubmit)="add(myForm)">
-                                                <div class="form-group">
-                                                        <label  class="col-form-label">REF / ID</label>
-                                                        <input type="number" name="id" [(ngModel)]="document.id" class="form-control" placeholder="document reference">
-                                                    </div>
+                                                
                                             <div class="form-group">
                                                     <label for="inputEmail">Type</label>
                                                     <!---->
                                                     <div class="form-group">
                                                         <select class="form-control" id="types" name="types" [(ngModel)]="document.type">
-                                                            <option *ngFor="let type of types; let i = index" [ngValue]="i">{{type}}</option>
+                                                            <option *ngFor="let type of types; let i = index" [ngValue]="type">{{type}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             <div class="form-group">
                                                 <label for="inputEmail">State</label>          
                                                  <div class="form-group">
-                                                    <select class="form-control" id="state" name="state" [(ngModel)]="document.state">
-                                                        <option *ngFor="let state of states; let i = index" [ngValue]="i">{{state}}</option>
+                                                    <select class="form-control" id="states" name="states" [(ngModel)]="document.state">
+                                                        <option *ngFor="let state of states; let i = index" [ngValue]="state">{{state}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -357,8 +458,9 @@ John Abraham</h5>
                                             
                                             <div class="form-group">
                                                 <label >Creation Date </label>
-                                                <input  type="date" name="date_creation" placeholder="System Date and Time" [(ngModel)]="document.date_creation"class="form-control">
+                                                <input  type="date" name="date_creation" placeholder="System Date and Time" [(ngModel)]="document.date_creation" class="form-control">
                                             </div>
+                                            {{date}}
                                             {{document|json}}
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                             <button type="reset" class="btn btn-danger">Cancel</button>
@@ -370,61 +472,8 @@ John Abraham</h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12" id="#list">
-                                <div class="section-block" id="basicform">
-                                        <h3 class="section-title">Document's list</h3>
-                                        <p>desc</p>
-                                    </div>
-                            <div class="card">
-                               
-                                <h5 class="card-header">Document's list</h5>
-                                <div class="card-body">
-                                    <table class="table" id="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Total HT</th>
-                                                <th scope="col">Total TTC</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Type</th>
-                                                <th scope="col">User</th>
-                                                <th scope="col">State</th>
-                                                <th scope="col"> Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <ng-container *ngFor='let doc of docs'>
-
-                                        <tbody>
-                                            
-                                            <tr class="table-primary" >
-                                                <th scope="row"> {{ doc.id}} </th>
-                                                <td> {{ doc.total_ht}} </td>
-                                                <td> {{ doc.total_ttc}} </td>
-                                                <td> {{ doc.total}} </td>
-                                                <td> {{ doc.date}} </td>
-                                                <td> {{ doc.type}} </td>
-                                                <td> {{ doc.user}} </td>
-                                                <td> {{ doc.state}} </td>
-                                                <td> 
-                                                    <button style="height: 40;width: 70;" class="btn btn-primary" data-toggle="modal" data-target="#modal" (click)="validate(doc.id,1,10)">Validate</button>
-                                                    <button style="height: 40;width: 70;" class="btn btn-secondary" data-toggle="modal" data-target="#modal" (click)="track(doc.id)">edit</button>
-                                                    <button  style="height: 40;width: 70;" class="btn btn-danger" (click)="delete(doc.id)">delete</button>
-                                                </td>
-                                                <p>{{message}}</p>
-                                                
-
-                                            </tr>
-                                        
-                                            <!--tr class="table-success"-->
-                                            <!--tr class="table-secondary"-->
-                                               
-                                        </tbody>
-                                        </ng-container>
-                                    </table>
-                                </div>
-                            </div>
-                          </div>
+                    
+                        
                            
                         
                         </div>

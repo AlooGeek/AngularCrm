@@ -9,12 +9,13 @@ import { Document } from 'src/app/core/models/document';
   styleUrls: ['./document.component.css']
 })
 export class DocumentComponent implements OnInit {
- docs:Array<any>=[];
+  docs:Array<any>=[];
 
  document = new Document();
 
  states:any= ['Treated','Not Treated','canceled','validated','payed','notPayed'];
  types:any=['quote','bill','command']
+  res;
 
 
  
@@ -24,6 +25,7 @@ export class DocumentComponent implements OnInit {
 
   this.docservice.getDocument().subscribe(data => this.docs=data);
 
+
   }
   
 
@@ -31,6 +33,8 @@ export class DocumentComponent implements OnInit {
     if (window.confirm('Are you sure, you want to delete?')){
       this.docservice.deleteDocument(id).subscribe(data => {
         location.reload();
+      } ,(err)=>{
+        console.log(err);
       })
     }
   } 
@@ -40,10 +44,14 @@ export class DocumentComponent implements OnInit {
     if(this.document.id ==null){
       this.api.post("/Document/add").subscribe(data =>{
         location.reload();
+      }, (err)=>{
+        console.log(err);
       });
     }else{
       this.api.put("/Document/update",this.document).subscribe( data => {
          location.reload();
+        }, (err)=>{
+          console.log(err);
         });     
     }
 
@@ -51,21 +59,26 @@ export class DocumentComponent implements OnInit {
   
 
   edit(document) {
-    this.document = this.document;
+    this.document = document;
   }
 
   validate(idDoc,idPrd,qte){
     
     this.api.post("/Document/validaterequest?idDoc="+idDoc+"&idProd="+idPrd+"&qte="+qte)
       .subscribe(data =>{
+        this.res=data["statusres"];
+        console.log(this.res);
         location.reload();
+      },(err)=>{
+        console.log(err);
       });
-  }
+    }
+  
 
   track(id){
     this.api.post("/Document/track?id="+id).subscribe(
       data => {
-        location.reload();
+this.res=data["statusres"];
       }
     );
 
