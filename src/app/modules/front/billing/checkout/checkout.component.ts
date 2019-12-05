@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit {
   verifyCoupon(){
     this.offer = new Offer;
     this.api.get("/offer/checkOffer/"+this.couponForm.controls.coupon.value).subscribe(res=>this.offer=res);
+    console.log(this.offer);
     //console.log(this.offer);
   }
 }
