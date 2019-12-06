@@ -4,10 +4,9 @@ import { CommonModule } from '@angular/common';
 import { BackRoutingModule } from './back-routing.module';
 import { BackComponent } from './back.component';
 import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [BackComponent, HeaderComponent, SidebarComponent],
+  declarations: [BackComponent, HeaderComponent],
   imports: [
     CommonModule,
     BackRoutingModule

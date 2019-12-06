@@ -29,11 +29,11 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     return next.handle(req).pipe(
       //if error is present in the response header redirect to error page    
-      /*  
+      
       catchError((error: HttpErrorResponse) => {
         this.router.navigate(['/error',error.status]);
         return throwError(error);
-      }),*/
+      }),
 
       //this will hide the loader when the response from the server has arrived
       //finalize(()=>this.loaderService.hide())

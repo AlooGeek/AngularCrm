@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ErrorComponent } from './shared/error/error.component';
 
 const routes: Routes = [
   {
@@ -9,7 +10,15 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: './modules/back/back.module#BackModule'
-  }
+  },
+  {
+    path: 'error/:status',
+    component:ErrorComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'error/404'
+  } 
 ];
 
 @NgModule({

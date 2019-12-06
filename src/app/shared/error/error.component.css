@@ -1,0 +1,23 @@
+.error{
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    width: 576px;
+    height: 576px;
+    margin: auto;
+}
+.error-403{
+    background-image: url("../../../assets/img/error_403.jpg");
+}
+.error-404{
+    background-image: url("../../../assets/img/error_404.jpg");
+}
+.error-500{
+    background-image: url("../../../assets/img/error_500.png");
+}
+@media(max-width:576px){
+    .error{
+        width: 320px!important;
+        height: 320px!important;
+    }
+}

@@ -1,0 +1,9 @@
+<div [ngClass]="{  
+  'error-403' : this.errorStatus=='401',
+  'error-404' : this.errorStatus=='404',
+  'error-500' : this.errorStatus != '401' && this.errorStatus != '404', 
+  'error' : true}">
+</div>
+<div class="col-12" style="text-align: center">
+  <a (click)="goBackRedirection()" href="">Go Back</a>
+</div>

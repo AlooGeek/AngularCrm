@@ -10,6 +10,7 @@ export class BackComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
