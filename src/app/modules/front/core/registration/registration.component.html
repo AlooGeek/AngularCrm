@@ -1,0 +1,71 @@
+<!-- Register Section Start -->
+<div class="register-section section mt-90 mb-90">
+  <div class="container">
+      <div class="row">
+          
+          <!-- Register -->
+          <div class=" col-12 d-flex ">
+              <div class="ee-register">
+                  
+                  <h3>We will need for your registration</h3>
+                  <p>E&E provide how all this mistaken idea of denouncing pleasure and sing pain born an will give you a complete account of the system, and expound</p>
+                  
+                  <!-- Register Form -->
+                  <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Username</label>
+                      <input type="text" class="form-control" name="username" [(ngModel)]="user.username" required>
+                      <label for="exampleInputEmail1">Email</label>
+                      <input type="email" class="form-control" name="email" [(ngModel)]="user.email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required>
+                      <label for="exampleInputPassword1">Address</label>
+                      <input type="text" class="form-control" name="Address" [(ngModel)]="user.address" required>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input" value="Individual" id="defaultGroupExample1" name="type"
+                        [(ngModel)]="user.type" checked>
+                      <label class="custom-control-label" for="defaultGroupExample1">Individual</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input" value="Company" id="defaultGroupExample2" name="type"
+                        [(ngModel)]="user.type">
+                      <label class="custom-control-label" for="defaultGroupExample2">Company</label>
+                    </div>
+                    <div *ngIf="user.type=='Individual'">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">CIN</label>
+                        <input type="text" class="form-control" name="cin" [(ngModel)]="user.cin">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">First Name</label>
+                        <input type="test" class="form-control" name="firstname" [(ngModel)]="user.firstname">
+                        <label for="exampleInputPassword1">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" [(ngModel)]="user.lastname">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Phone number 1</label>
+                        <input type="test" class="form-control" name="phoneNumPrimary" [(ngModel)]="user.phoneNumPrimary">
+                        <label for="exampleInputPassword1">Phone number 2</label>
+                        <input type="text" class="form-control" name="phoneNumAlternative" [(ngModel)]="user.phoneNumAlternative">
+                      </div>
+                    </div>
+                    <div *ngIf="user.type=='Company'">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Company Name</label>
+                        <input type="test" class="form-control" name="companyName" [(ngModel)]="user.companyName">
+                        <label for="exampleInputPassword1">Company Type</label>
+                        <input type="text" class="form-control" name="CompanyType" [(ngModel)]="user.companyType">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                  
+              </div>
+          </div>
+          
+      </div>
+  </div>
+</div><!-- Register Section End -->

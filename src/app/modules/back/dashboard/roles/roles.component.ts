@@ -35,7 +35,7 @@ export class RolesComponent implements OnInit {
         responsive: true
       };
       $("#table").DataTable(this.dtOption);
-    }, 200);
+    }, 300);
   }
 
   /**

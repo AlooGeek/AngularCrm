@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FrontComponent } from './front.component';
 import { LoginformComponent } from './core/loginform/loginform.component';
 import { StoreProductComponent } from './store-product/store-product.component';
+import { RegistrationComponent } from './core/registration/registration.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path:'authenticate',
         component:LoginformComponent
+      },
+      {
+        path:'register',
+        component:RegistrationComponent
       },
       {
         path: 'billing',

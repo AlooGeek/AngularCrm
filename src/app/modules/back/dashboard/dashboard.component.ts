@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  private username=localStorage.getItem('username');
+
   constructor() { }
 
   ngOnInit() {
+  }
+  onLogOut(){
+    localStorage.clear();
   }
 
 }

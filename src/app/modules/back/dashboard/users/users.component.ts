@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
      * this method fetchs users from server
      */
     this.api.get("/user/all").subscribe(data => (this.dataList = data));
-    this.user.roleRoleName = "Individual";
+    this.user.type = "Individual";
 
     /**
      * this method will initiate the datatable after the element are loaded
@@ -37,7 +37,7 @@ export class UsersComponent implements OnInit {
         responsive: true
       };
       $("#table").DataTable(this.dtOption);
-    }, 100);
+    }, 300);
   }
 
   /**
@@ -54,9 +54,10 @@ export class UsersComponent implements OnInit {
       });
     }
   }
-  /**
-   * this method is triggered when the user click on edit button
-   */
+  onAdd(){
+    this.user=new User();
+    this.user.type = "Individual";
+  }
   onEdit(user) {
     this.user = user;
   }
