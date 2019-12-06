@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:8080/crm-web/rest',
+  serverUrl: 'http://127.0.0.1:9585/crm-web/rest',
   envName: 'DEV'
 };
 

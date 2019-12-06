@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
      * this method fetchs users from server
      */
     this.api.get("/user/all").subscribe(data => (this.dataList = data));
-    this.user.type = "Individual";
+    this.user.roleRoleName = "Individual";
 
     /**
      * this method will initiate the datatable after the element are loaded

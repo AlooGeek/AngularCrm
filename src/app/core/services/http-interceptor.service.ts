@@ -18,7 +18,6 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     //If storage contains a user logged in get the request and put authorization 
     //header in it
-    console.log('yazebbi');
     if (localStorage.getItem('username') && localStorage.getItem('basicauth')) {
       req = req.clone({
         setHeaders: {

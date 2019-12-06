@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { DocumentRoutingModule } from './document-routing.module';
 import { DocumentComponent } from './document.component';
@@ -10,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     DocumentRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule 
   ]
 })
 export class DocumentModule { }

@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "crm-project-angular": {
-      "root": "",
+      "root": "src",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
@@ -25,11 +25,10 @@
             "styles": [
               "src/styles.css",
               "src/assets/css/icon-font.min.css"
+             
             ],
             "scripts": [
-              "src/assets/js/vendor/modernizr-2.8.3.min.js",
-              "src/assets/js/plugins.js",
-              "src/assets/js/main.js"
+           
 
             ],
             "es5BrowserSupport": true

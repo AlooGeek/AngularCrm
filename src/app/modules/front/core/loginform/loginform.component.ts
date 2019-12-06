@@ -32,6 +32,7 @@ export class LoginformComponent implements OnInit {
         if(data.roleRoleName=='ROLE_ADMIN'){
           this.router.navigateByUrl('/admin');
         }
+       
       }
       else this.errorMessage='username or password are incorrect';
     });

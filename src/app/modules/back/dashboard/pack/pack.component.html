@@ -1,0 +1,248 @@
+<div class="row">
+  <!-- ============================================================== -->
+  <!-- basic table  -->
+  <!-- ============================================================== -->
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="card">
+          <h5 class="card-header">Pack List</h5>
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-striped table-bordered first">
+                      <thead>
+                         <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Reduction Amount</th>
+                        <th>Description</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    
+                    </tr>
+                </thead>
+                <tbody *ngFor="let p of listpack">
+
+                    <tr> 
+                           <td>{{p.PackName}}</td> 
+                           <td>{{p.PackStartDate}}</td> 
+                           <td>{{p.PackEndDate}}</td> 
+                           <td>{{p.reduction_amount}}</td> 
+                           <td>{{p.PackDescription}}</td> 
+                           <td><button  class="btn btn-warning" >Update</button></td>
+                           <td><button (click)="Deletepack(p.id)" class="btn btn-danger btn-sm">Delete</button></td>
+                              </tr>
+                          
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                            <th>Name</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Reduction Amount</th>
+                            <th>Description</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                          </tr>
+                      </tfoot>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card">
+            <h5 class="card-header">Pack Product List</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered first">
+                        <thead>
+                           <tr>
+                          <th>Pack Name</th>
+                          <th>Products</th>
+                       <th>Price of Pack</th>
+                          <th>Update</th>
+                          <th>Delete</th>
+                      
+                      </tr>
+                  </thead>
+                  <tbody *ngFor="let pp of listpackproduct">
+  
+                      <tr> 
+                             <td>{{pp.packs.PackName}}</td> 
+                             <td>{{pp.productss.label}}</td> 
+                             <td *ngFor="let r of listprice">{{ r[0] }}</td>
+                             <td><button  class="btn btn-warning" >Update</button></td>
+                             <td><button  class="btn btn-danger btn-sm">Delete</button></td>
+                                </tr>
+                            
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                    <th>Pack Name</th>
+                                    <th>Products</th>
+                                    <th>Price of Pack</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- ============================================================== -->
+  <!-- end basic table  -->
+  <!-- ============================================================== -->
+</div>
+
+<div class="row">
+  <div class="col-xl-12">
+      <!-- ============================================================== -->
+      <!-- pageheader  -->
+      <!-- ============================================================== -->
+      <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="page-header" id="top">
+                  <h2 class="pageheader-title">Packs </h2>
+                  <div class="page-breadcrumb">
+                      <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                              <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Form Elements</li>
+                          </ol>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- end pageheader  -->
+      <!-- ============================================================== -->
+   
+      <!-- ============================================================== -->
+      <!-- basic form  -->
+      <!-- ============================================================== -->
+      <div class="row">
+      <div class=" col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" >
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="section-block" id="basicform">
+                  <h3 class="section-title">Add Pack</h3>
+                 
+              </div>
+              <div class="card">
+                 <div class="card-header d-flex">
+                      <h4 class="card-header-title">Pack</h4>
+                      <div class="toolbar ml-auto">
+                          <a href="#" class="btn btn-primary btn-sm ">Excel</a>
+                          <a href="#" class="btn btn-light btn-sm">PDF</a>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <form [formGroup]="packForm">
+
+                           <div class="form-group">
+                              <label for="inputText3" class="col-form-label" >Pack Name</label>
+                              <input type="text" class="form-control" id="exampleFormControlFile1" formControlName="name" >
+                           </div>
+                  
+                          <div class="form-group">
+                                  <label for="inputText9" class="col-form-label" >Start Date</label>
+                                  <input type="date" class="form-control" id="exampleFormControlFile9" formControlName="StartDate" >
+                          </div>
+
+                              <div class="form-group">
+                                  <label for="inputText9" class="col-form-label" >End Date</label>
+                                  <input type="date" class="form-control" id="exampleFormControlFile9" formControlName="EndDate" >
+                              </div>
+                              <div class="form-group">
+                                  <label for="inputText9" class="col-form-label" >Reduction amount</label>
+                                  <input type="number" class="form-control" id="exampleFormControlFile9" formControlName="ReductionAmount" >
+                              </div>
+          
+                              <div class="form-group">
+                                  <label for="inputText9" class="col-form-label" >Description</label>
+                                  <input type="text" class="form-control" id="exampleFormControlFile9" formControlName="Description" >
+                              </div>
+                        
+                         
+
+                          <button class="btn btn-primary" (click)="AddPack()" [disabled]="packForm.invalid" >Save</button>
+                         
+                      </form>
+                  </div>
+                  
+              </div>
+          </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" id="#list">
+              <div class="section-block" id="basicform">
+                      <h3 class="section-title">Affectation</h3>
+                      <div class="card-body">
+                        <form [formGroup]="packproductForm">
+
+                            <label for="inputText3" class="col-form-label" >Pack Name</label><br>
+                             <div class="form-group">
+                                <select class="form-control" formControlName="pack">
+                                    <option *ngFor="let pack of listpack" value="{{pack.id}}">{{pack.PackName}}</option>
+                                </select>
+                            </div>
+
+                            <label for="inputText3" class="col-form-label" >Prodcut Name</label><br>
+                            <div class="form-group">
+                                <select class="form-control" formControlName="product">
+                                    <option *ngFor="let prod of listproduct" value="{{prod.id}}">{{prod.label}}</option>
+                                </select>
+                            </div>
+  
+                            <button class="btn btn-primary" (click)="AddPackProduct()" [disabled]="packproductForm.invalid" >Save</button>
+                           
+                        </form>
+                    </div>
+                  </div>
+         <!--  <div class="card">
+                  <div class="table-responsive">
+                          <table class="table table-striped table-bordered first">
+                              <thead>
+                                  <tr>
+                                 <th>Username</th>
+                                 <th>Score</th>
+                             </tr>
+                         </thead>
+                         <tbody *ngFor="let u of listUser">
+       
+                             <tr> 
+                                    <td>{{u.username}}</td>
+                                    <td>{{u.userScore}}</td> 
+                             </tr>
+                                   
+                               </tbody>
+                              <tfoot>
+                                  <tr>
+                                      <th>Username</th>
+                                      <th>Score</th>
+                              
+                                  </tr>
+                              </tfoot>
+                          </table>
+                      </div>
+              
+           
+                    -->
+      </div>
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- end basic form  -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+     
+  </div>
+  <!-- ============================================================== -->
+  <!-- sidenavbar -->
+  <!-- ============================================================== -->
+
+  <!-- ============================================================== -->
+  <!-- end sidenavbar -->
+  <!-- ============================================================== -->
+</div>
