@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { product } from 'src/app/core/models/Product';
 import { ExcelService } from 'src/app/core/services/excel.service';
+declare var $;
 
 @Component({
   selector: 'app-discount',
@@ -48,10 +49,6 @@ export class DiscountComponent implements OnInit {
       
     }
 
-
-
-
-
     listdiscount:any[];
   discount:Discount;
   SelectedDiscount:Discount;
@@ -65,6 +62,18 @@ product:product;
   ngOnInit() {
     this.getAllDiscounts();
     this.getProductWithoutDiscount();
+   
+    /*
+    setTimeout(function(dataTable) {
+      this.dtOption = {
+        paging: true,
+        ordering: true,
+        info: true,
+        responsive: true
+      };
+      $("#table").DataTable(this.dtOption);
+    }, 300);*/
+    
     
   }
 

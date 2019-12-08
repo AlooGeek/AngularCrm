@@ -67,8 +67,8 @@ export class PackComponent implements OnInit {
 
   AddPackProduct(){
     this.packproduct=new Pack_Product();
-    this.packproduct.pack=this.packproductForm.controls.pack.value;
-    this.packproduct.product=this.packproductForm.controls.product.value;
+    this.packproduct.packs=this.packproductForm.controls.pack.value;
+    this.packproduct.productss=this.packproductForm.controls.product.value;
     this.api.post("/packproducts/"+this.packproductForm.controls.pack.value+"/"+this.packproductForm.controls.product.value,this.pack).subscribe(data=>{
       alert("Pack Added");
     });

@@ -4840,7 +4840,7 @@ img.mfp-img {
 /*-- Hero Item --*/
 .hero-item {
   padding: 85px 150px 60px 100px;
-  background-color: #fefcef; }
+  background-color: #ffffff; }
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .hero-item {
       padding: 85px 100px 60px 100px; } }

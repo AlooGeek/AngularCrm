@@ -71,16 +71,16 @@
                     <!-- Hero Item Start -->
                     <div class="hero-item">
                         <div class="row align-items-center justify-content-between">
-<ngb-carousel *ngIf="images">
-    <div *ngFor="let d of listdiscount">
+                <ngb-carousel *ngIf="images">
+    <div *ngFor="let d of listdiscount; let index=index">
     <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="../../../../assets/images/discount/2.jpg" alt="Random first slide" width="950px" height="500px">
-      </div>
-      <div class="carousel-caption">
-        <h3>{{d.Name}}</h3>
-        <p>{{d.Reduction}}</p>
-      </div>
+     
+      <div class="offer-time-wrap" [style.background]="'url(' + images[index] + ')'" style="height: 500px; width: 950px;">
+        <h1><span>UP TO</span>{{d.Reduction}}%</h1>
+        <h3>QUALITY & EXCLUSIVE <span>PRODUCTS</span></h3>
+        <h1>{{d.Name}}</h1>
+        <div class="countdown" data-countdown="2019/06/20"></div>
+    </div>
     </ng-template>
     </div>
   </ngb-carousel>
@@ -94,30 +94,7 @@
 </div>
 
 
-<div class="banner-section section mb-60">
-    <div class="container">
-        <div class="row row-10">
-            
-            
-            <!-- Banner -->
-            <div class="col-md-8 col-12 mb-30">
-                <div class="banner">
-                        <h2>HURRY UP!</h2>
-                        <h1><span>uPhone X</span></h1>
-                        <h1>IT’S <span class="big">29%</span> OFF</h1>
-                        <a href="#">get it now</a>
-                    <a href="#"><img src="../../../../assets/images/discount/4.jpg" width="770" height="320px" alt="Banner"></a>
-                </div>
-            </div>
-            
-            <!-- Banner -->
-            <div class="col-md-4 col-12 mb-30">
-                <div class="banner"><a href="#"><img src="assets/images/banner/banner-2.jpg" alt="Banner"></a></div>
-            </div>
-            
-        </div>
-    </div>
-</div><!-- Banner Section End -->
+
 
 <div class="product-section section mb-60">
     <div class="container">
@@ -201,9 +178,30 @@
         <div class="row">
             
             <!-- Banner -->
-            <div class="col-12">
-                <div class="banner"><a href="#"><img src="assets/images/banner/banner-3.jpg" alt="Banner"></a></div>
+            <div class="col-md-12 col-12 mb-30">
+                <ngb-carousel>
+                    <div *ngFor="let packproduct of listgrouped; let index=index">
+                    <ng-template ngbSlide>
+                     
+                      <div class="offer-time-wrap" style="background-image:url('assets/images/discount/pacck.jpg')" >
+                        <h1><span>UP TO</span>{{packproduct.packs.reduction_amount}} %</h1>
+                        <h3>EXCLUSIVE <span>PACKS</span></h3>
+                        <button class="btn btn-warning" (click)="GetSamePack()"> Discover Pack Products </button>
+                        <div *ngFor="let pr of FindPackProduct"> 
+                            <div *ngIf="pr.id == packproduct.packs.id">
+                                <h3>{{pr.listString}}</h3>
+                                </div>
+                        </div>
+                        <h3>And Get a Free Gift with the</h3>
+                        <h1>{{packproduct.packs.PackName}} Pack!</h1>
+                    </div>
+                    
+                    </ng-template>
+                    
+                    </div>
+                  </ngb-carousel>
             </div>
+            
             
         </div>
     </div>
@@ -286,7 +284,7 @@
                     
                     <!-- Offer Time Wrap Start -->
                     <div class="col mb-30">
-                        <div class="offer-time-wrap" style="background-image: url(assets/images/bg/offer-products.jpg)">
+                        <div class="offer-time-wrap" style="background-image: url(assets/images/bg/offer-products-2.jpg)">
                             <h1><span>UP TO</span> 55%</h1>
                             <h3>QUALITY & EXCLUSIVE <span>PRODUCTS</span></h3>
                             <h4><span>LIMITED TIME OFFER</span> GET YOUR PRODUCT</h4>
@@ -298,16 +296,16 @@
                     <div class="col-12">
                       <div class="row">
                           
-                          <div class="col pb-20 pt-10">
+                          <div class="col pb-20 pt-10" *ngFor="let pp of listpackproduct">
                               <!-- Product Start -->
-                              <div class="ee-product">
+                              <div class="ee-product" >
       
                                   <!-- Image -->
                                   <div class="image">
       
                                       <span class="label sale">sale</span>
       
-                                      <a href="single-product.html" class="img"><img src="assets/images/product/product-16.png" alt="Product Image"></a>
+                                      <a href="single-product.html" class="img"><img src="assets/images/discount/pacck.jpg" alt="Product Image"></a>
       
                                       <div class="wishlist-compare">
                                           <a href="#" data-tooltip="Compare"><i class="ti-control-shuffle"></i></a>
@@ -325,14 +323,14 @@
                                       <div class="category-title">
       
                                           <a href="#" class="cat">Tv & Audio</a>
-                                          <h5 class="title"><a href="single-product.html">Nexo Andriod TV Box</a></h5>
+                                          <h5 class="title"><a href="single-product.html">{{pp.packs.PackName}}</a></h5>
       
                                       </div>
       
                                       <!-- Price & Ratting -->
                                       <div class="price-ratting">
       
-                                          <h5 class="price"><span class="old">$360 </span>$250.00</h5>
+                                          <h5 class="price"><span class="old">$360 </span>{{pp.prix}}</h5>
                                           <div class="ratting">
                                               <i class="fa fa-star"></i>
                                               <i class="fa fa-star"></i>
@@ -347,59 +345,7 @@
       
                               </div><!-- Product End -->
                           </div>
-                          <div class="col pb-20 pt-10">
-                              <!-- Product Start -->
-                              <div class="ee-product">
-      
-                                  <!-- Image -->
-                                  <div class="image">
-      
-                                      <span class="label sale">sale</span>
-      
-                                      <a href="single-product.html" class="img"><img src="assets/images/product/product-16.png" alt="Product Image"></a>
-      
-                                      <div class="wishlist-compare">
-                                          <a href="#" data-tooltip="Compare"><i class="ti-control-shuffle"></i></a>
-                                          <a href="#" data-tooltip="Wishlist"><i class="ti-heart"></i></a>
-                                      </div>
-      
-                                      <a href="#" class="add-to-cart"><i class="ti-shopping-cart"></i><span>ADD TO CART</span></a>
-      
-                                  </div>
-      
-                                  <!-- Content -->
-                                  <div class="content">
-      
-                                      <!-- Category & Title -->
-                                      <div class="category-title">
-      
-                                          <a href="#" class="cat">Tv & Audio</a>
-                                          <h5 class="title"><a href="single-product.html">Nexo Andriod TV Box</a></h5>
-      
-                                      </div>
-      
-                                      <!-- Price & Ratting -->
-                                      <div class="price-ratting">
-      
-                                          <h5 class="price"><span class="old">$360 </span>$250.00</h5>
-                                          <div class="ratting">
-                                              <i class="fa fa-star"></i>
-                                              <i class="fa fa-star"></i>
-                                              <i class="fa fa-star"></i>
-                                              <i class="fa fa-star"></i>
-                                              <i class="fa fa-star-half-o"></i>
-                                          </div>
-      
-                                      </div>
-      
-                                  </div>
-      
-                              </div><!-- Product End -->
-                          </div>
-      
-      
-                          
-                          
+                      
                       </div>
                   </div>
                 </div>

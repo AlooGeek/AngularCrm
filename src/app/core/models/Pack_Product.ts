@@ -6,6 +6,6 @@ export class Pack_Product{
 	period:number;
 	prix:number;
 
-	pack:Pack;
-	product:product;
+	packs:Pack;
+	productss:product;
 }
