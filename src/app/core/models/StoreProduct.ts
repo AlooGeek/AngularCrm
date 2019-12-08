@@ -2,7 +2,7 @@ export class StoreProduct{
     
     public id  : number;
 	public qte :number;
-	public dateEntry: Date ;
+	public dateEntry: any ;
 	public disponible :number;
 	
 }

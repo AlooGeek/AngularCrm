@@ -7,6 +7,7 @@ import { product } from 'src/app/core/models/Product';
 import { Pack } from 'src/app/core/models/Pack';
 import { FindPackProduct } from 'src/app/core/models/FindPackProduct';
 import { forEach } from '@angular/router/src/utils/collection';
+import { ProductService } from 'src/app/core/services/ProductService';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
   //src/assets/images/discount/${n}
   images = [1,2,3,4].map((n) => `http://localhost:4200/assets/images/discount/${n}.jpg`);
   
-  constructor(private api: ApiService,config: NgbCarouselConfig) {
+  constructor(private api: ApiService,config: NgbCarouselConfig,private servprod:ProductService) {
     // customize default values of carousels used by this component tree
     config.interval = 2000;
     config.wrap = false;
@@ -33,6 +34,8 @@ export class HomeComponent implements OnInit {
   listProducts:product[];
   listPacks:Pack[];
   listprice:any[];
+  listlength:product[];
+  listparNombre: product[]=[];
 
   FindPackProduct:FindPackProduct[]=[];
   fpp:FindPackProduct;
@@ -41,10 +44,9 @@ export class HomeComponent implements OnInit {
    this.api.get("/discount").subscribe(res=>this.listdiscount=res);
    this.api.get("/packproducts").subscribe(res=>this.listpackproduct=res);
    this.api.get("/packproducts/liste").subscribe(res=>this.listgrouped=res);
-
-   this.api.get("/product").subscribe(res=>this.listProducts=res);
    this.api.get("/pack").subscribe(res=>this.listPacks=res);
    this.api.get("/packproducts/packprice").subscribe(res=>this.listprice=res);
+   this.getAllProduct();
   
   }
 
@@ -90,6 +92,57 @@ export class HomeComponent implements OnInit {
     return this.FindPackProduct;
     
   }
+
+
+  //************************** PRODUCTS **********************************
+
+
+getAllProduct(){
+
+   
+     return this.listProducts=this.AfficherNbrPro(8);
+
+  }
+
+
+  AfficherNbrPro(nbr:any){
+   
+    var i=0;
+   
+    this.servprod.AfficherProduit().subscribe(res=>{
+
+      this.listlength=res;
+      if (this.listlength.length<nbr){
+        for (i;i<this.listlength.length;i++){
+        
+        this.listparNombre.push(res[i]);
+        }
+      }else{
+
+      
+    for (i;i<nbr;i++){
+      
+      this.listparNombre.push(res[i]);
+       
+       }
+      }
+
+    })
+
+
+  this.listparNombre=[];
+  return this.listparNombre;
+}
+
+
+
+
+
+
+
+
+
+  //************************** END PRODUCTS *******************************
 
 
 

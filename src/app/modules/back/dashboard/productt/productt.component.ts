@@ -3,7 +3,6 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { product } from 'src/app/core/models/Product';
 import { Category } from 'src/app/core/models/Category';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from 'src/app/core/services/ProductService';
 import { CategoryService } from 'src/app/core/services/CategoryService';
@@ -81,7 +80,12 @@ export class ProducttComponent implements OnInit {
     }else{
       this.p.tva=this.ProductForm.controls.tva.value;
     }
-    this.p.disponible=this.ProductForm.controls.dispo.value;
+    if (this.ProductForm.controls.dispo.value==""){
+      this.p.disponible=1;
+    }else{
+      this.p.disponible=this.ProductForm.controls.dispo.value;
+    }
+  
     this.idcat=this.ProductForm.controls.categ.value;
 
     
@@ -176,6 +180,8 @@ export class ProducttComponent implements OnInit {
    this.prod = new product();
 
    this.prod.id=this.prodUpdate.id;
+
+   this.prod.newprice=this.prodUpdate.newprice;
 
    if (this.ProductUpdateForm.controls.categ.value!=""){
     this.category=this.ProductUpdateForm.controls.categ.value;
