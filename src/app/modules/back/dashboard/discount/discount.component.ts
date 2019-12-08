@@ -171,16 +171,20 @@ product:product;
 
 
     this.api.put("/discount/"+id,this.discount).subscribe();
+    console.log("updated");
+   // location.reload();
   }
 
 
     
-  AffectDiscountToProduct(idproduit,i){
+  AffectDiscountToProduct(i){
 
     this.product=this.listProduct[i];
     // this.SelectedDiscount=this.listdiscount[i];
 
-    this.api.put("/product/"+idproduit+"/"+this.productaffectForm.controls.discount.value,this.product).subscribe();
+    this.api.put("/product/affect/"+this.productaffectForm.controls.discount.value,this.product).subscribe();
+    location.reload();
+
   }
 
   download(){
