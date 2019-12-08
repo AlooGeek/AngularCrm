@@ -16,6 +16,7 @@ import { AgmCoreModule } from "@agm/core";
 import { UsersComponent } from "./users/users.component";
 import { RolesComponent } from "./roles/roles.component";
 import { ClaimsComponent } from "./claims/claims.component";
+import { DocumentModule } from './document/document.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ClaimsComponent } from "./claims/claims.component";
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    DocumentModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,

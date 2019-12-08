@@ -4,7 +4,8 @@ import { DocumentComponent } from './document.component';
 
 const routes: Routes = 
 [{path: 'add',
-component: DocumentComponent  },];
+component: DocumentComponent  },
+];
 
  
 
