@@ -16,8 +16,8 @@
                                     <th>Quantity</th>
                                     <th>New Price</th>
                                     <th>TVA</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                    <th><i class="fas fa-edit"></i> Update</th>
+                                    <th><i class="fas fa-trash-alt"> </i> Delete</th>
                                    
                                 </tr>
                             </thead>
@@ -25,7 +25,7 @@
 
                                 <tr> 
                                        <td>{{p.label}}</td>
-                                       <td><img [src]='"assets/images/"+p.imageUrl+""' width="180" height="150">   </td> 
+                                       <td><img [src]='"assets/images/product/"+p.imageUrl+""' width="180" height="150">   </td> 
                                        <td>{{p.unitPrice}} DT</td> 
                                        <td>{{p.qte}}</td> 
                                        <td>{{p.newprice}}</td> 
