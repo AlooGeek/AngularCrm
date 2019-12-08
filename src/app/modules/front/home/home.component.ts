@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   listgrouped:Pack_Product[];
   listProducts:product[];
   listPacks:Pack[];
+  listprice:any[];
 
   FindPackProduct:FindPackProduct[]=[];
   fpp:FindPackProduct;
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit {
 
    this.api.get("/product").subscribe(res=>this.listProducts=res);
    this.api.get("/pack").subscribe(res=>this.listPacks=res);
+   this.api.get("/packproducts/packprice").subscribe(res=>this.listprice=res);
   
   }
 

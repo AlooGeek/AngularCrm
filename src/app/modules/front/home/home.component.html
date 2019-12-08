@@ -176,23 +176,30 @@
 <div class="banner-section section mb-90">
     <div class="container">
         <div class="row">
-            
+                <div class="col-12 mb-40">
+                        <div class="section-title-one" data-title="Our Packs"><h1>Our Packs</h1></div>
+                    </div>
             <!-- Banner -->
             <div class="col-md-12 col-12 mb-30">
                 <ngb-carousel>
                     <div *ngFor="let packproduct of listgrouped; let index=index">
                     <ng-template ngbSlide>
                      
-                      <div class="offer-time-wrap" style="background-image:url('assets/images/discount/pacck.jpg')" >
+                      <div class="offer-time-wrap" style="background-image:url('assets/images/discount/pck1.jpg')" >
                         <h1><span>UP TO</span>{{packproduct.packs.reduction_amount}} %</h1>
                         <h3>EXCLUSIVE <span>PACKS</span></h3>
-                        <button class="btn btn-warning" (click)="GetSamePack()"> Discover Pack Products </button>
+                        <button class="btn btn-danger" (click)="GetSamePack()"> Discover Pack Products and Price</button>
                         <div *ngFor="let pr of FindPackProduct"> 
-                            <div *ngIf="pr.id == packproduct.packs.id">
+                            <div *ngIf="pr.id == packproduct.packs.id;let i=index">
                                 <h3>{{pr.listString}}</h3>
+                                <div *ngFor="let a of listprice">
+                                    <div *ngIf="packproduct.packs.id==a[1]">
+                                    <h3>With only {{a[0]}} DT</h3>
                                 </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3>And Get a Free Gift with the</h3>
+                        <h3>In the</h3>
                         <h1>{{packproduct.packs.PackName}} Pack!</h1>
                     </div>
                     
