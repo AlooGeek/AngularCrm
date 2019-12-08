@@ -8,6 +8,7 @@ export interface IStoreService{
     AjouterStore(s:Store) : Observable<any>;
     ModifierStore(s:Store) : Observable<any>;
     SupprimerStore(IdStore :any) :Observable<any>;
+    getById(IdStore:any) :Observable<any>;
 
 
 

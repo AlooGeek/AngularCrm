@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorComponent } from './shared/error/error.component';
 
+
 const routes: Routes = [
   {
     path: '',

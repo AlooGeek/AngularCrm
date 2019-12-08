@@ -9,4 +9,7 @@ export interface IStoreProduct{
     ModifierStoreProduct(s:StoreProduct) : Observable<any>;
     SupprimerStoreProduct(IdStoreProduct :any) :Observable<any>;
     AfficherParCritere(param:any,value:any):Observable<any>;
+    AfficherStoreGROUPBYProduct(IdStore:any) : Observable<any>;
+    AfficherStoreGROUPBYSTORE() : Observable<any>;
+
 }
