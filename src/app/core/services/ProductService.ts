@@ -29,7 +29,7 @@ listparNombre:product[]=[];
 
 
     ModifierProduit(IdCategory:any,p: product): Observable<any> {
-        return  this.api.put("/product/"+IdCategory+"/"+0,p);
+        return  this.api.put("/product/"+IdCategory,p);
     }
 
 

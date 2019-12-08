@@ -49,7 +49,7 @@ export class ProducttComponent implements OnInit {
  
 
 
-  constructor(private api : ApiService,private servprod:ProductService,private servCategory:CategoryService,private modalService: NgbModal) { }
+  constructor(private servprod:ProductService,private servCategory:CategoryService,private modalService: NgbModal) { }
 
   ngOnInit() {
 

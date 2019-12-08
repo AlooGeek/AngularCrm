@@ -104,19 +104,7 @@
                               
                             </div>
 
-                            <!-- Product Showing -->
-                            <div class="product-showing">
-                                <p>Showing</p>
-                                <form [formGroup]="NombreForm"> 
-                                <select formControlName="name" name="showing" class="nice-select" (change)="getByNumber()">
-                                    <option value="2">2</option>
-                                    <option value="4">4</option>
-                                    <option value="6">6</option>
-                                    <option value="8">8</option>
-                                    <option value="10">10</option>
-                                </select>
-                                </form>
-                            </div>
+                        
 
                             <!-- Product Short -->
                             <div class="product-short">
@@ -159,7 +147,7 @@
 
                                 
 
-                                <a href="single-product.html" class="img"><img src="../../../../assets/images/{{p.imageUrl}}" alt="Product Image"></a>
+                                <a href="single-product.html" class="img"><img src="../../../../assets/images/product/{{p.imageUrl}}" alt="Product Image"></a>
 
                                 <div class="wishlist-compare">
                                     <a href="#" data-tooltip="Compare"><i class="ti-control-shuffle"></i></a>
