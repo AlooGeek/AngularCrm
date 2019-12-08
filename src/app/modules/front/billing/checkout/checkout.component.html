@@ -1,9 +1,6 @@
-<p>
-  checkout works!
-</p>
-<!--app-header></app-header-->
-
-
+<head>
+        <script src="https://www.paypal.com/sdk/js?client-id=AQ0A1-7sW_0qCE9fCjk7NuyB9fMKJnsOgWS-bdxU56D4fQswyQlMyJr1rsHvk4Wu9_mmj7IYvyVYjhOM"></script>
+</head>
 <!-- Mini Cart Wrap Start -->                      
 <div class="mini-cart-wrap">
 
@@ -110,17 +107,6 @@
                              <h4 class="checkout-title">Billing Address</h4>
 
                              <div class="row">
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>First Name*</label>
-                                     <input type="text" placeholder="First Name">
-                                 </div>
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>Last Name*</label>
-                                     <input type="text" placeholder="Last Name">
-                                 </div>
-
                                  <div class="col-md-6 col-12 mb-20">
                                      <label>Email Address*</label>
                                      <input type="email" placeholder="Email Address">
@@ -138,17 +124,16 @@
 
                                  <div class="col-12 mb-20">
                                      <label>Address*</label>
-                                     <input type="text" placeholder="Address line 1">
-                                     <input type="text" placeholder="Address line 2">
+                                     <input type="text" placeholder="Address ">
                                  </div>
 
                                  <div class="col-md-6 col-12 mb-20">
                                      <label>Country*</label>
                                      <select class="nice-select">
-                                          <option>Bangladesh</option>
+                                         <option>Tunisia</option>
+                                         <option>France</option>
+                                          <option>Spain</option>
                                           <option>China</option>
-                                          <option>country</option>
-                                          <option>India</option>
                                           <option>Japan</option>
                                      </select>
                                  </div>
@@ -167,88 +152,10 @@
                                      <label>Zip Code*</label>
                                      <input type="text" placeholder="Zip Code">
                                  </div>
-
-                                 <div class="col-12 mb-20">
-                                     <div class="check-box">
-                                         <input type="checkbox" id="create_account">
-                                         <label for="create_account">Create an Acount?</label>
-                                     </div>
-                                     <div class="check-box">
-                                         <input type="checkbox" id="shiping_address" data-shipping>
-                                         <label for="shiping_address">Ship to Different Address</label>
-                                     </div>
-                                 </div>
-
                              </div>
 
                          </div>
-                         
-                         <!-- Shipping Address -->
-                         <div id="shipping-form" class="mb-40">
-                             <h4 class="checkout-title">Shipping Address</h4>
-
-                             <div class="row">
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>First Name*</label>
-                                     <input type="text" placeholder="First Name">
-                                 </div>
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>Last Name*</label>
-                                     <input type="text" placeholder="Last Name">
-                                 </div>
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>Email Address*</label>
-                                     <input type="email" placeholder="Email Address">
-                                 </div>
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>Phone no*</label>
-                                     <input type="text" placeholder="Phone number">
-                                 </div>
-
-                                 <div class="col-12 mb-20">
-                                     <label>Company Name</label>
-                                     <input type="text" placeholder="Company Name">
-                                 </div>
-
-                                 <div class="col-12 mb-20">
-                                     <label>Address*</label>
-                                     <input type="text" placeholder="Address line 1">
-                                     <input type="text" placeholder="Address line 2">
-                                 </div>
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>Country*</label>
-                                     <select class="nice-select">
-                                          <option>Bangladesh</option>
-                                          <option>China</option>
-                                          <option>country</option>
-                                          <option>India</option>
-                                          <option>Japan</option>
-                                     </select>
-                                 </div>
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>Town/City*</label>
-                                     <input type="text" placeholder="Town/City">
-                                 </div>
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>State*</label>
-                                     <input type="text" placeholder="State">
-                                 </div>
-
-                                 <div class="col-md-6 col-12 mb-20">
-                                     <label>Zip Code*</label>
-                                     <input type="text" placeholder="Zip Code">
-                                 </div>
-
-                             </div>
-
-                         </div>
+                                                  
                          
                      </div>
                      
@@ -270,11 +177,8 @@
                                          <li>Play Station X 22 X 01 <span>$295.00</span></li>
                                          <li>Roxxe Headphone Z 75 X 01 <span>$110.00</span></li>
                                      </ul>
-                                     
-                                     <p>Sub Total <span>$1250.00</span></p>
-                                     <p>Shipping Fee <span>$00.00</span></p>
-                                     
-                                     <h4>Grand Total <span>$1250.00</span></h4>
+                                                                          
+                                     <h4>Total <span>$1250.00</span></h4>
                                      
                                  </div>
                                  
@@ -286,36 +190,15 @@
                                  <h4 class="checkout-title">Payment Method</h4>
                          
                                  <div class="checkout-payment-method">
-                                   
-                                     <div class="single-method">
-                                         <input type="radio" id="payment_check" name="payment-method" value="check">
-                                         <label for="payment_check">Check Payment</label>
-                                         <p data-method="check">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                     </div>
-                                   
-                                     <div class="single-method">
-                                         <input type="radio" id="payment_bank" name="payment-method" value="bank">
-                                         <label for="payment_bank">Direct Bank Transfer</label>
-                                         <p data-method="bank">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                     </div>
-                                   
+                                    <div class="single-method">
+                                        <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                                        <label for="payment_cash">Paypal</label>       
+                                        <div #paypal></div>
+                                    </div>
                                      <div class="single-method">
                                          <input type="radio" id="payment_cash" name="payment-method" value="cash">
                                          <label for="payment_cash">Cash on Delivery</label>
-                                         <p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                     </div>
-                                   
-                                     <div class="single-method">
-                                         <input type="radio" id="payment_paypal" name="payment-method" value="paypal">
-                                         <label for="payment_paypal">Paypal</label>
-                                         <p data-method="paypal">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                     </div>
-                                   
-                                     <div class="single-method">
-                                         <input type="radio" id="payment_payoneer" name="payment-method" value="payoneer">
-                                         <label for="payment_payoneer">Payoneer</label>
-                                         <p data-method="payoneer">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
-                                     </div>
+                                     </div>                                 
                                    
                                      <div class="single-method">
                                          <input type="checkbox" id="accept_terms">
@@ -323,17 +206,11 @@
                                      </div>
                                      
                                  </div>
-                              
-                                 <div class="col-md-6 col-12 mb-20">
-                                        <form [formGroup]="couponForm">
-                                    <label>Coupon Code</label>
-                                    <input type="text" placeholder="Coupon" formControlName="coupon">
-                                    <button (click)="verifyCoupon()" class="place-order">Verify coupon</button>
-                                    {{offer?.OffReduction_amount}}
-                                </form>
-                                </div>
-                           
-                                 <button class="place-order">Place order</button>
+                                 
+                                 <button class="place-order" >Order</button>
+                                 <button class="place-order" style="background-color: rgba(207, 204, 204, 0.698);">Quote</button>
+
+                                 
                                  
                              </div>
                              
@@ -377,36 +254,5 @@
     </div>
 </div><!-- Brands Section End -->
 
-<!-- Subscribe Section Start -->
-<div class="subscribe-section section bg-gray pt-55 pb-55">
-  <div class="container">
-      <div class="row align-items-center">
-          
-          <!-- Mailchimp Subscribe Content Start -->
-          <div class="col-lg-6 col-12 mb-15 mt-15">
-              <div class="subscribe-content">
-                  <h2>SUBSCRIBE <span>OUR NEWSLETTER</span></h2>
-                  <h2><span>TO GET LATEST</span> PRODUCT UPDATE</h2>
-              </div>
-          </div><!-- Mailchimp Subscribe Content End -->
-          
-          
-          <!-- Mailchimp Subscribe Form Start -->
-          <div class="col-lg-6 col-12 mb-15 mt-15">
-              
-      <form id="mc-form" class="mc-form subscribe-form" >
-        <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email here" />
-        <button id="mc-submit">subscribe</button>
-      </form>
-      <!-- mailchimp-alerts Start -->
-      <div class="mailchimp-alerts text-centre">
-        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-      </div><!-- mailchimp-alerts end -->
-              
-          </div><!-- Mailchimp Subscribe Form End -->
-          
-      </div>
-  </div>
-</div><!-- Subscribe Section End -->
+
+

@@ -1,34 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
+import { async } from 'q';
 import { ApiService } from 'src/app/core/services/api.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Offer } from 'src/app/core/models/Offer';
-
+declare var paypal:any;
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+ 
 
-  offer:Offer;
+  @ViewChild('paypal') paypalElement :ElementRef;
 
-  couponForm = new FormGroup({
-    'coupon':new FormControl('',[Validators.required]),
-  
-
-    });
-
-  constructor(private api: ApiService) { }
+  paidFor :false;
+  product ={
+    price : 1000,
+    description:'used once',
+  };
+  constructor(private api:ApiService) { }
 
   ngOnInit() {
+    paypal.Buttons({
+      createOrder:(data , actions)=>{
+
+        return actions.order.create({
+          purchase_units:[
+            {
+              description:this.product.description,
+              amount : {
+                currency_code:'USD',
+                value: this.product.price
+              }
+            }
+          ]
+        });
+      },
+      onApprove: async (data,actions)=>{
+      },
+    }).render(this.paypalElement.nativeElement);
+  }
+
+  sendRequest(){
+
+  }
+
+  getQuote(){
+    
   }
 
 
+ 
 
-  verifyCoupon(){
-    this.offer = new Offer;
-    this.api.get("/offer/checkOffer/"+this.couponForm.controls.coupon.value).subscribe(res=>this.offer=res);
-    console.log(this.offer);
-    //console.log(this.offer);
-  }
-}
+
+ }

@@ -141,7 +141,6 @@
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" id="#list">
                 <div class="section-block" id="basicform">
                         <h3 class="section-title">Product Without Discount</h3>
-                       
                     </div>
             <div class="card">
                   <div class="table-responsive">
@@ -151,7 +150,6 @@
                                    <th>Product Name</th>
                                    <th>Price</th>
                                    <th>Affect Discount</th>
-                              
                                </tr>
                            </thead>
                            <tbody *ngFor="let p of listProduct ;let index=index">
@@ -164,7 +162,7 @@
                             <select class="form-control" formControlName="discount">
                                     <option *ngFor="let d of listdiscount" value="{{d.id}}">{{d.Reduction}}</option>
                                 </select>
-                                <button  (click)="AffectDiscountToProduct(p.id,index)" class="btn btn-warning" >Affect Discount </button>
+                                <button  (click)="AffectDiscountToProduct(index)" class="btn btn-warning" >Affect Discount </button>
                             </form>
                             
                            </td>
@@ -176,6 +174,7 @@
                                   <tr>
                                     <th>Product Name</th>
                                     <th>Price</th>
+                                    <th>Affect Discount</th>
                                   </tr>
                               </tfoot>
                             </table>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
-import { Document } from 'src/app/core/models/document';
-
+import { Doc } from 'src/app/core/models/doc';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-track',
   templateUrl: './track.component.html',
@@ -9,12 +9,19 @@ import { Document } from 'src/app/core/models/document';
 })
 export class TrackComponent implements OnInit {
 
-  doc = new Document();
+  doc = new Doc();
   res:string;
-  constructor(private api:ApiService) { }
-
+  paramurl: any;
+  id:any = this.ar.paramMap.subscribe(
+    result=> this.paramurl=result.get('id'));
+  @ViewChild('content') content: ElementRef;
+  constructor(private api:ApiService,private ar:ActivatedRoute) { }
   ngOnInit() {
     this.res;
+    this.ar.paramMap.subscribe(
+      result=> this.paramurl=result.get('id'));
+      console.log(this.id[0]);
+
   }
 
 
@@ -27,7 +34,9 @@ export class TrackComponent implements OnInit {
 
   }
 
+  
 
 
-  }
+
+}
 

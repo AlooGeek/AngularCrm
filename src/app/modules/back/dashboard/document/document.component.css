@@ -2658,22 +2658,22 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 
 .btn-primary {
     color: #fff;
-    background-color: #5969ff;
-    border-color: #5969ff;
+    background-color: #f5d730;
+    border-color: #f5d730;
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #4656e9;
-    border-color: #4656e9;
+    background-color: #e7d56c;
+    border-color: #e7d56c;
 }
 
 .btn-primary.focus,
 .btn-primary:focus {
     color: #fff;
-    background-color: #4656e9;
-    border-color: #4656e9;
-    box-shadow: 0 0 0 1px rgb(37, 52, 158);
+    background-color: #e7d56c;
+    border-color: #e7d56c;
+    box-shadow: 0 0 0 1px rgb(233, 236, 43);
 }
 
 .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -2686,8 +2686,8 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #4656e9;
-    border-color: #4656e9;
+    background-color: #ffc750;
+    border-color: #ffc750;
 }
 
 
@@ -2695,30 +2695,30 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 
 .btn-secondary {
     color: #fff;
-    background-color: #ff407b;
-    border-color: #ff407b;
+    background-color: #999999;
+    border-color: #999999;
 }
 
 .btn-secondary:hover {
     color: #fff;
-    background-color: #f0346e;
-    border-color: #f0346e;
+    background-color: #6d6a6a;
+    border-color: #6d6a6a;
 }
 
 .btn-secondary.focus,
 .btn-secondary:focus {
     color: #fff;
-    background-color: #f0346e;
-    border-color: #f0346e;
-    box-shadow: 0 0 0 1px rgb(222, 17, 80);
+    background-color: #6d6a6a;
+    border-color: #6d6a6a;
+    box-shadow: 0 0 0 1px rgb(49, 44, 45);
 }
 
 .btn-secondary:not(:disabled):not(.disabled).active,
 .btn-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-secondary.dropdown-toggle {
     color: #fff;
-    background-color: #f0346e;
-    border-color: #f0346e;
+    background-color: #999999;
+    border-color: #999999;
 }
 
 

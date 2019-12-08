@@ -1,0 +1,183 @@
+
+<!-- Cart Overlay -->
+<div class="cart-overlay"></div>
+
+<!-- Page Banner Section Start -->
+<div class="page-banner-section section">
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>Orders List</h1>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">ORDERS LIST </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
+            <div class="banner"><a href="#"><img src="assets/images/banner/banner-15.jpg" alt="Banner"></a></div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
+            <div class="banner"><a href="#"><img src="assets/images/banner/banner-14.jpg" alt="Banner"></a></div>
+        </div>
+
+    </div>
+</div><!-- Page Banner Section End -->
+
+<!-- Feature Product Section Start -->
+<div class="product-section section mt-90 mb-90">
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-12">
+                
+                <div class="row mb-50">
+                    <div class="col">
+                       
+                        <!-- Shop Top Bar Start -->
+                        <div class="shop-top-bar">
+
+                            <!-- Product View Mode -->
+                            <div class="product-view-mode">
+                                <a class="active" href="#" data-target="list"><i class="fa fa-list"></i></a>
+                            </div>
+
+                            <!-- Product Showing -->
+                            <div class="product-showing">
+                                    <input style="width: 100px;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="on" placeholder="Search.." >
+
+                            </div>
+
+                            <!-- Product Short -->
+                            <div class="product-short">
+                                    <div class="shop-sorting">
+                                    <select class="form-control" id="sorting" #selectSort (change)="onSort(selectSort.value)">
+                                        <option value="date_creation:reverse" [selected]="(uiService.sorting$ | async) === 'date_creation:reverse'">Newest Articles</option>
+                                        <option value="total" [selected]="(uiService.sorting$ | async) === 'total'">Low - High Price</option>
+                                        <option value="total:reverse" [selected]="(uiService.sorting$ | async) === 'total:reverse'">High - Low Price</option>
+                                    </select>
+                                    
+                                  </div>
+                            </div>
+
+                            <!-- Product Pages -->
+                            <div class="product-pages">
+                                <p>Pages 1 of 25</p>
+                            </div>
+
+                        </div><!-- Shop Top Bar End -->
+                        
+                    </div>
+                </div>
+                
+                <!-- Shop Product Wrap Start -->
+                <!-- Shop Product Wrap Start -->
+                <ng-container *ngFor="let doc of docs |  paginate: { itemsPerPage: 10, currentPage: p } |filter:searchText; ">
+
+                <div class="shop-product-wrap list row">
+                    
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-12 pb-30 pt-10">
+                       
+                        <!-- Product Start -->
+                        
+                        <!-- Product List Start -->
+                        <div class="ee-product-list">
+
+                            <!-- Image -->
+
+                            <!-- Content -->
+                            <div style="height: 100 px;" class="content">
+                                <!-- Category & Title -->
+                                <div class="head-content">
+                                    <div class="category-title">
+                                        <h5 class="title"><a href="single-product.html">{{doc.id}}</a></h5>
+                                        <a href="#" class="cat">{{doc.type}}</a>
+                                    </div>   
+                                    <h5 class="price">Total : {{doc.total}}</h5>
+                                </div>
+                                <div class="left-content">
+                                    <div class="actions">
+                                        <h4>Actions</h4>
+                                        <a  style="margin-left: 10px;"  class="place-order" (click)="request()"><i class=""></i><span>Request</span></a>
+                                        <a style="margin-left: 10px;background-color: cadetblue; border-color:cadetblue;" [routerLink]="['/home/billing/track',doc.id]" class="place-order"><i class=""></i><span>Track</span></a>
+                                        <a  style="margin-left: 10px;background-color: grey;border-color: grey;" (click)="cancel(doc.id)" class="place-order"><i class=""></i><span>Cancel</span></a>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="right-content">
+                                    <div class="specification">
+                                        <h4>Details</h4>
+                                        
+                                        <ul>
+                                            <li>Total HT :{{doc.total_ht}} </li>
+                                            <li>Total TTC : {{doc.total_ttc}} </li>
+                                            <li>Date : {{ doc.date_creation |  date:'yyyy-MM-dd hh:mm'}} </li>
+                                            <li>Quantity : </li>
+
+                                        </ul>
+                                    </div>
+                                    <span class="availability">State: <span>{{doc.state}} </span></span>
+                                    <div class="specification">
+                                    <a  style="width:auto;" (click)="showDetails(doc.id)" class="place-order"><i class=""></i><span>{{txtBtn}}</span></a>    <br>                                    
+                                    <div *ngIf="show">
+                                        <div class="desc">
+                                            <span class="availability">Deadline: <span>{{res}} </span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                           
+
+                            </div>
+
+                        </div><!-- Product List End -->
+                        
+                    </div>
+
+                    
+                    
+                    
+                </div><!-- Shop Product Wrap End -->
+            </ng-container>
+            
+
+
+                <div class="row mt-30">
+                    <div class="col">
+
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</div><!-- Feature Product Section End -->
+
+<!-- Brands Section Start -->
+<div class="brands-section section mb-90">
+    <div class="container">
+        <div class="row">
+            
+                <div class="brand-item col-3"><img src="assets/images/brands/brand-1.png" alt="Brands"></div>
+                <div class="brand-item col-3"><img src="assets/images/brands/brand-2.png" alt="Brands"></div>
+                <div class="brand-item col-3"><img src="assets/images/brands/brand-3.png" alt="Brands"></div>
+                <div class="brand-item col-3"><img src="assets/images/brands/brand-4.png" alt="Brands"></div>
+            
+        </div>
+    </div>
+</div><!-- Brands Section End -->
+
+<router-outlet></router-outlet>
