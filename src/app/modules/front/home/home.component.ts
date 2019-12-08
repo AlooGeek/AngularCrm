@@ -7,6 +7,7 @@ import { product } from 'src/app/core/models/Product';
 import { Pack } from 'src/app/core/models/Pack';
 import { FindPackProduct } from 'src/app/core/models/FindPackProduct';
 import { forEach } from '@angular/router/src/utils/collection';
+import { ProductService } from 'src/app/core/services/ProductService';
 
 
 @Component({
