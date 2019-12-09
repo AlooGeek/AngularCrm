@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DocumentComponent } from './document.component';
 
 const routes: Routes = 
-[{path: 'add',
+[{path: '',
 component: DocumentComponent  },
 ];
 
