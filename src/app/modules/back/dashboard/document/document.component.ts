@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentService } from '../../../../core/services/document.service';
 import { ApiService } from 'src/app/core/services/api.service';
-import { Document } from 'src/app/core/models/document';
+import { Doc } from 'src/app/core/models/doc';
 
 @Component({
   selector: 'app-document',
@@ -9,14 +9,14 @@ import { Document } from 'src/app/core/models/document';
   styleUrls: ['./document.component.css']
 })
 export class DocumentComponent implements OnInit {
-  docs:Array<any>=[];
+ docs:Array<any>=[];
 
- document = new Document();
+ document = new Doc();
 
- states:any= ['Treated','Not Treated','canceled','validated','payed','notPayed'];
+ states:any= ['treated','notTreated','canceled','validated','payed','notPayed'];
  types:any=['quote','bill','command']
-  res;
-
+res;
+date;
 
  
   constructor(private api:ApiService,private docservice : DocumentService ) { }

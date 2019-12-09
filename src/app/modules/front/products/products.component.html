@@ -1,95 +1,199 @@
+ 
 
 <div class="page-banner-section section">
-        <div class="page-banner-wrap row row-0 d-flex align-items-center ">
-    
-            <!-- Page Banner -->
-            <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
-                <div class="page-banner">
-                    <h1>Locate Store</h1>
-                    <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
-                    <div class="breadcrumb">
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">Locate Store</a></li>
-                        </ul>
-                    </div>
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>{{listStores.name}} </h1>
+                <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="/store">Stores</a></li>
+                    </ul>
                 </div>
             </div>
-    
-            <!-- Banner -->
-            <div class="col-lg-4 col-md-6 col-12 order-lg-1">
-                <div class="banner"><a href="#"><img src="assets/images/banner/banner-15.jpg" alt="Banner"></a></div>
-            </div>
-    
-            <!-- Banner -->
-            <div class="col-lg-4 col-md-6 col-12 order-lg-3">
-                <div class="banner"><a href="#"><img src="assets/images/banner/banner-14.jpg" alt="Banner"></a></div>
-            </div>
-    
         </div>
-    </div><!-- Page Banner Section End -->
-    
-    <!-- Store Section Start -->
-    <div class="store-section section mt-90 mb-20">
-        <div class="container">
-            <div class="row">
-                
-                <!-- Single Store -->
-                <div class="col-lg-3 col-md-6 col-12 mb-70" *ngFor="let s of listStoreProduct">
 
-                    <div class="single-store" (click)="goto(s.stores.id)">
-        
-                            
-                        <img src="../../../../assets/images/shop.jpg" width="230px" height="180px" >        
-                        <h3><i class="fa fa-circle" style="color:rgb(66, 183, 42);"> </i>  {{s.stores.name}}</h3>
-                        <p>{{s.stores.address}} </p>
-                        <p>Phone-Number: {{s.stores.phoneNumber}} </p>
-                        <p><a href="mailto:{{s.email}}">{{s.stores.email}}</a> </p>
-                        <p><strong>Opening Hours: Mon-Vend: 08H00 to 19H00; Sat: 08H00 to 19H00; Sun: CLOSED</strong></p>
-                           
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
+            <div class="banner"><a href="#"><img src="assets/images/banner/banner-15.jpg" alt="Banner"></a></div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
+            <div class="banner"><a href="#"><img src="assets/images/banner/banner-14.jpg" alt="Banner"></a></div>
+        </div>
+
+    </div>
+</div><!-- Page Banner Section End -->
+
+
+<!-- Product Section Start -->
+<div class="product-section section mt-90 mb-90">
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-12">
+                
+                <div class="row mb-50">
+                    <div class="col">
                        
-                        </div>
+                        <!-- Shop Top Bar Start -->
+                        <div class="shop-top-bar">
 
+                            <!-- Product View Mode -->
+                            <div class="product-view-mode">
+                                <a class="active"  data-target="grid"><i class="fa fa-th"></i></a>
+                              
+                            </div>
+
+
+                      
+                              <h1 style="text-align: center;" > List Products </h1>
+                        
+
+                            <!-- Product Short -->
+                          
+
+                            <!-- Product Pages -->
+                            <div class="product-pages">
+                                <p>-{{listStoreProduct.length}}- Products</p>
+                            </div>
+
+                        </div><!-- Shop Top Bar End -->
+                        
                     </div>
                 </div>
-
-                 
                 
-            </div>
-        </div>
-   <!-- Store Section End -->
+                <div *ngIf="listStoreProduct[0]==null">
+                    <h1 style="text-align: center;">  NO Product Are Available Now in {{listStores.name}} ! </h1>
+                    <h4> Soon.... <a href="/store"><i class="fa fa-angle-left"></i>Back to stores!</a> </h4>  
+                    
+                   </div>
+            
+                <!-- Shop Product Wrap Start -->
+                <!-- Shop Product Wrap Start -->
+                <div class="shop-product-wrap grid row">
 
-
-
-    
-    <!-- Banner Section Start -->
-    <div class="banner-section section mb-90">
-        <div class="container">
-            <div class="row">
-                
-                <!-- Banner -->
-                <div class="col-12">
-                        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-
-                            <div *ngFor="let s of listStore" >
-            <agm-marker [latitude]="s.latitude" [longitude]="s.longitude" [markerDraggable]="false"  [label]="{text:s.name}" (markerClick)="goto(s.id)" [iconUrl]="{url:'../../../../assets/images/locator3.png', scaledSize: {
-                                width: 90,
-                                height: 60
-                            }}"></agm-marker>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-12 pb-30 pt-10" *ngFor="let p of listStoreProduct">
                         
+                        <div class="ee-product">
+
+                            <!-- Image -->
+                            <div class="image">
+
+                                
+
+                                <a href="single-product.html" class="img"><img src="../../../../assets/images/product/{{p.products.imageUrl}}" alt="Product Image" width="150px" height="260px"></a>
+
+                                <div class="wishlist-compare">
+                                    <a  data-tooltip="Compare"><i class="ti-control-shuffle"></i></a>
+                                    <a  data-tooltip="Wishlist"><i class="ti-heart"></i></a>
+                                </div>
+
+                                <a (click)="ajouterPanier(p)" class="add-to-cart"><i class="ti-shopping-cart"></i><span>ADD TO CART</span></a>
+
+                            </div>
+
+                            <!-- Content -->
+                            <div class="content">
+
+                                <!-- Category & Title -->
+                                <div class="category-title">
+
+                                    <a  class="cat">{{p.products.category.name}}</a>
+                                    <h5 class="title"><a href="single-product.html">{{p.products.label}}</a></h5>
+                                    <div *ngIf="p.disponible==1;else other"> 
+                                      <p><i class="fa fa-circle" style="color:rgb(66, 183, 42);"> </i> Available  </p> 
+                                    </div>
+                                    <ng-template #other>
+                                       <p><i class="fa fa-circle" style="color:red;"> </i>Available  </p>
+                                    </ng-template>
+
+                                </div>
+
+                                <!-- Price & Ratting -->
+                                <div class="price-ratting">
+
+                                    <div *ngIf="p.products.newprice==0;else old">
+                                        <h5 class="price">{{p.products.unitPrice}} DT</h5>
+                                        </div>
+                                        <ng-template #old>
+                                                <h5 class="price"><span class="old">{{p.products.unitPrice}} DT </span>{{p.products.newprice}} DT</h5>
+                                        </ng-template>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
-                    <agm-marker [label]="labelOptions"  [latitude]="latitude" [longitude]="longitude" [markerDraggable]="false"> </agm-marker>
 
-                         </agm-map> 
+
+                        
+                  
+                    </div>
+                      
+
+
+                      
+
+              
+                        
+                  
+                    </div>
+
+                    
+           
+                
+                
+                
+                
+                
+                
+                
+                
+                <!-- Shop Product Wrap End -->
+                
+                <div class="row mt-30">
+                    <div class="col">
+
+                        <ul class="pagination">
+                            <li><a><i class="fa fa-angle-left"></i>Back</a></li>
+                            <li class="active"><a>1</a></li>
+                          <!--  <li ><a href="#2">2</a></li>
+                            <li><a href="#3">3</a></li>
+                            <li> - - - - - </li>
+                            <li><a href="#18">18</a></li>
+                            <li><a href="#19">19</a></li>
+                            <li><a href="#20">20</a></li>-->
+                            <li><a>Next<i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                        
+                    </div>
                 </div>
                 
             </div>
+            
         </div>
-    </div><!-- Banner Section End -->
-    
+    </div>
+</div><!-- Feature Product Section End -->
 
-    
+
+
+
+
+  
     <!-- Subscribe Section Start -->
     <div class="subscribe-section section bg-gray pt-55 pb-55">
         <div class="container">
@@ -235,21 +339,4 @@
         </div><!-- Footer Bottom Section Start -->
         
     </div><!-- Footer Section End -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

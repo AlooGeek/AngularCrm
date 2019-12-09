@@ -10,6 +10,7 @@ import { Store } from '../models/Store';
     providedIn: 'root'
   })
 export class StoreService implements IStoreService{
+  
    
    
 
@@ -29,6 +30,10 @@ export class StoreService implements IStoreService{
 
     SupprimerStore(IdStore: any): Observable<any> {
         return this.api.delete("/store/"+IdStore);
+    }
+
+    getById(IdStore: any): Observable<any> {
+        return this.api.get("/store/"+IdStore);
     }
 
 

@@ -4,6 +4,7 @@ import { FrontComponent } from './front.component';
 import { LoginformComponent } from './core/loginform/loginform.component';
 import { StoreProductComponent } from './store-product/store-product.component';
 import { RegistrationComponent } from './core/registration/registration.component';
+import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path:'store',
         component:StoreProductComponent
+      },
+      {
+        path:'products/:ids',
+        component:ProductsComponent
       },
     ]
   }

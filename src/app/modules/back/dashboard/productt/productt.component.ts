@@ -185,6 +185,8 @@ export class ProducttComponent implements OnInit {
 
    if (this.ProductUpdateForm.controls.categ.value!=""){
     this.category=this.ProductUpdateForm.controls.categ.value;
+  }else{
+    this.category=this.prodUpdate.category.id;
   }
  
     //IMAGEURL

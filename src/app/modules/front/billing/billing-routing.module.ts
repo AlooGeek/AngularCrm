@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { TrackComponent } from './track/track.component';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
+import { ManagementComponent } from './management/management.component';
+import { BillPdfComponent } from './bill-pdf/bill-pdf.component';
 
 
 const routes: Routes = [
@@ -9,8 +13,15 @@ const routes: Routes = [
     path: 'checkout', component: CheckoutComponent
   },
   {
-    path: 'track', component: TrackComponent
+    path: 'track/:id', component: TrackComponent
   },
+  {
+    path: 'management', component: ManagementComponent
+  },
+  {
+    path: 'pdf/:id', component:BillPdfComponent
+  },
+  {path:'**', redirectTo:'404', pathMatch:'full'}
 ];
 
 @NgModule({

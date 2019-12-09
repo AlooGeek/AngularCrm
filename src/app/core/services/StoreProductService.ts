@@ -11,6 +11,8 @@ import { StoreProduct } from '../models/StoreProduct';
   })
 export class StoreProductService implements IStoreProduct{
   
+  
+  
 
     /**
      *
@@ -40,6 +42,14 @@ export class StoreProductService implements IStoreProduct{
     AfficherParCritere(param: any, value: any): Observable<any> {
         return this.api.get("/storeproduct/"+param+"/"+value);
     }
+
+    AfficherStoreGROUPBYProduct(IdStore:any): Observable<any> {
+        return this.api.get("/storeproduct/groupprod/"+IdStore);
+    }
+    AfficherStoreGROUPBYSTORE(): Observable<any> {
+        return this.api.get("/storeproduct/groupstore");
+    }
+
 
 
 
