@@ -25,7 +25,9 @@ export class ManagementComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.docservice.getDocument().subscribe(data => {this.docs=data;
+    this.api.get("/Document/getAll").subscribe(data => {this.docs=data;
+    },(err)=>{
+      console.log(err);
     });
      this.res; 
      this.populateDocs(); 
@@ -91,7 +93,7 @@ export class ManagementComponent implements OnInit {
     this.uiService.sorting$.next(sortBy);
   }
   private populateDocs() {
-    this.docservice.getDocument().pipe(
+    this.api.get("/Document/getAll").pipe(
     switchMap(docList => {
       this.docs = docList;
       return this.route.queryParamMap;

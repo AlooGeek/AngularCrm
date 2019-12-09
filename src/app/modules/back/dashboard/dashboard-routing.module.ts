@@ -24,9 +24,10 @@ const routes: Routes = [
       { path: "store", component: StoreComponent },
       { path: "users", component: UsersComponent },
       { path: "roles", component: RolesComponent },
+      { path: "doc", loadChildren: "./document/document.module#DocumentModule" },
     ]
   },
-  { path: "doc", loadChildren: "./document/document.module#DocumentModule" }
+  
 ];
 
 @NgModule({

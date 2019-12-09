@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { BillPdfComponent } from './bill-pdf/bill-pdf.component';
 import { SortPipe } from './management/sort.pipe';
 import { UiService } from './management/ui.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 
 
@@ -18,6 +20,8 @@ import { UiService } from './management/ui.service';
     CommonModule,
     BillingRoutingModule,
     FormsModule,
+    Ng2SearchPipeModule ,
+    NgxPaginationModule,
  
   ],
   providers: [ SortPipe,UiService],
