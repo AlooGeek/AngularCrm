@@ -109,25 +109,50 @@
                              <div class="form-group">
                                 <label for="inputText3" class="col-form-label" >Offer Name</label>
                                 <input type="text" class="form-control" id="exampleFormControlFile1" formControlName="name" >
-                             </div>
+                                <div *ngIf="offerf.name.touched && offerf.name.invalid">
+                                        <div *ngIf="offerf.name.errors.required" class="alert alert-danger">
+                                         <i class="fas fa-minus-circle"></i> Offer Name Is Required!
+                                        </div>
+                                        </div> 
+                            </div>
                    
                             <div class="form-group">
                                     <label for="inputText9" class="col-form-label" >Start Date</label>
                                     <input type="date" class="form-control" id="exampleFormControlFile9" formControlName="StartDate" >
-                            </div>
+                                    <div *ngIf="offerf.StartDate.touched && offerf.StartDate.invalid">
+                                            <div *ngIf="offerf.StartDate.errors.required" class="alert alert-danger">
+                                             <i class="fas fa-minus-circle"></i> Start Date Is Required!
+                                            </div>
+                                            </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="inputText9" class="col-form-label" >End Date</label>
                                     <input type="date" class="form-control" id="exampleFormControlFile9" formControlName="EndDate" >
+                                    <div *ngIf="offerf.EndDate.touched && offerf.EndDate.invalid">
+                                            <div *ngIf="offerf.EndDate.errors.required" class="alert alert-danger">
+                                             <i class="fas fa-minus-circle"></i> End Date Is Required!
+                                            </div>
+                                            </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputText9" class="col-form-label" >Reduction amount</label>
-                                    <input type="number" class="form-control" id="exampleFormControlFile9" formControlName="ReductionAmount" >
+                                    <input type="number" class="form-control" id="exampleFormControlFile9" formControlName="ReductionAmount" min="1" max="100" >
+                                    <div *ngIf="offerf.ReductionAmount.touched && offerf.ReductionAmount.invalid">
+                                            <div *ngIf="offerf.ReductionAmount.errors.required" class="alert alert-danger">
+                                             <i class="fas fa-minus-circle"></i> Reduction amount Is Required!
+                                            </div>
+                                            </div>
                                 </div>
             
                                 <div class="form-group">
                                     <label for="inputText9" class="col-form-label" >Description</label>
                                     <input type="text" class="form-control" id="exampleFormControlFile9" formControlName="Description" >
+                                    <div *ngIf="offerf.Description.touched && offerf.Description.invalid">
+                                            <div *ngIf="offerf.Description.errors.required" class="alert alert-danger">
+                                             <i class="fas fa-minus-circle"></i> Description Is Required and must be > 1!
+                                            </div>
+                                            </div>
                                 </div>
                           
                            

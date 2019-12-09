@@ -184,7 +184,7 @@
                 <ngb-carousel>
                     <div *ngFor="let packproduct of listgrouped; let index=index">
                     <ng-template ngbSlide>
-                     
+                    
                       <div class="offer-time-wrap" style="background-image:url('assets/images/discount/pck1.jpg')" >
                         <h1><span>UP TO</span>{{packproduct.packs.reduction_amount}} %</h1>
                         <h3>EXCLUSIVE <span>PACKS</span></h3>
@@ -202,7 +202,7 @@
                         <h3>In the</h3>
                         <h1>{{packproduct.packs.PackName}} Pack!</h1>
                     </div>
-                    
+                
                     </ng-template>
                     
                     </div>
@@ -304,8 +304,9 @@
                     <div class="col-12">
                       <div class="row">
                           
-                          <div class="col pb-20 pt-10" *ngFor="let pp of listpackproduct">
+                          <div class="col pb-20 pt-10" *ngFor="let pp of listgrouped">
                               <!-- Product Start -->
+                             
                               <div class="ee-product" >
       
                                   <!-- Image -->
@@ -319,9 +320,9 @@
                                           <a href="#" data-tooltip="Compare"><i class="ti-control-shuffle"></i></a>
                                           <a href="#" data-tooltip="Wishlist"><i class="ti-heart"></i></a>
                                       </div>
-      
-                                      <a href="#" class="add-to-cart"><i class="ti-shopping-cart"></i><span>ADD TO CART</span></a>
-      
+                                            
+                                      <a (click)="ajouterPanierPack(pp.productss)" class="add-to-cart"><i class="ti-shopping-cart"></i><span>ADD TO CART</span></a>
+                                                  
                                   </div>
       
                                   <!-- Content -->
@@ -329,11 +330,18 @@
       
                                       <!-- Category & Title -->
                                       <div class="category-title">
-      
-                                          <a href="#" class="cat">Tv & Audio</a>
-                                          <h5 class="title"><a href="single-product.html">{{pp.packs.PackName}}</a></h5>
-      
-                                      </div>
+                                    
+                                            
+                                            <div *ngFor="let pr of FindPackProduct"> 
+
+                                        <div *ngIf="pr.id == pp.packs.id;let i=index">
+                                            <a href="#" class="cat">{{pr.listString}}</a>
+                                        </div>
+                                        </div>
+                                         <h5 class="title"><a href="single-product.html">{{pp.packs.PackName}}</a></h5>
+                                          
+                                        
+                                     </div>
       
                                       <!-- Price & Ratting -->
                                       <div class="price-ratting">
@@ -349,9 +357,9 @@
       
                                       </div>
       
-                                  </div>
       
                               </div><!-- Product End -->
+                               </div>
                           </div>
                       
                       </div>
