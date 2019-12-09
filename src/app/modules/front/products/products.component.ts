@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/core/services/ProductService';
 import { StoreProductService } from 'src/app/core/services/StoreProductService';
 import { StoreProduct } from 'src/app/core/models/StoreProduct';
@@ -18,10 +18,10 @@ import { Store } from 'src/app/core/models/Store';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private activatedroute : ActivatedRoute,private servstore:StoreService,private modalService: NgbModal,private servcat:CategoryService,private servprod:ProductService,private servsp:StoreProductService) { }
+  constructor(private activatedroute : ActivatedRoute,private router:Router,private servstore:StoreService,private modalService: NgbModal,private servcat:CategoryService,private servprod:ProductService,private servsp:StoreProductService) { }
 
   ids:any;
-  listStoreProduct:StoreProduct[];
+  listStoreProduct:StoreProduct[]=[];
   listCategory:Category[];
   listStores: Store[];
   
@@ -33,6 +33,9 @@ export class ProductsComponent implements OnInit {
     this.getStoreProductsById();
     this.getAllCategory();
     this.getAllStores();
+
+
+    this.listPanierstore = JSON.parse(localStorage.getItem("panier"));
   }
 
   CategForm = new FormGroup({
@@ -66,21 +69,50 @@ export class ProductsComponent implements OnInit {
 
 
 
-  listPanier : StoreProduct[]=[];
+  listPanier:StoreProduct[]=[];
+
+  listPanierstore:StoreProduct[]=[];
 
 
-  ajouterPanier(p){
 
+
+  open(content,p) {
+
+    console.log(p);
+    this.listPanier=JSON.parse(localStorage.getItem("panier"));
+   if (p!="nothing"){
+  if (!this.listPanier){
+    this.listPanier=[];
     this.listPanier.push(p);
     localStorage.setItem("panier", JSON.stringify(this.listPanier));
-    alert(localStorage.getItem("panier"));
+  
+  }else{
 
+    this.listPanier=JSON.parse(localStorage.getItem("panier"));
+    var b=false;
+      this.listPanier.forEach(lp => {
 
+        if (lp.id==p.id){
+          b=true;
+        }
+        
+        
+      });
+
+      if (b==false){
+        this.listPanier.push(p);
+        localStorage.setItem("panier", JSON.stringify(this.listPanier));
+      }
   }
 
-  open(content) {
 
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+}
+
+this.listPanierstore = JSON.parse(localStorage.getItem("panier"));
+
+
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title',size: 'lg'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -97,6 +129,25 @@ export class ProductsComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
+
+
+listtest:StoreProduct[];
+
+
+delete(i){
+ 
+    this.listPanier= JSON.parse(localStorage.getItem("panier"));
+
+    this.listPanier.splice(i,1);
+    localStorage.setItem("panier", JSON.stringify(this.listPanier));
+
+    this.listPanierstore=JSON.parse(localStorage.getItem("panier"));
+}
+
+tobilling(){
+  this.router.navigateByUrl('billing/checkout');
+  this.modalService.dismissAll();
+}
 
 }
 
