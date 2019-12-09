@@ -6,12 +6,16 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { product } from 'src/app/core/models/Product';
 import { ExcelService } from 'src/app/core/services/excel.service';
 declare var $;
+import {Chart} from 'chart.js';
+
 
 @Component({
   selector: 'app-discount',
   templateUrl: './discount.component.html',
   styleUrls: ['./discount.component.css']
 })
+
+
 export class DiscountComponent implements OnInit {
 
 
@@ -56,10 +60,25 @@ export class DiscountComponent implements OnInit {
 product:product;
   listProduct:product[];
 
+  //charts
+  LineChart:any=[];
+  BarChart:any=[];
+  PieChart:any=[];
+  listestataffect:[];
+listamount:[];
 
   constructor(private api: ApiService,private modalService: NgbModal,private excelService:ExcelService) { }
 
   ngOnInit() {
+    this.api.get("/discount/statistiqueDiscount").subscribe((data:any)=>{
+      this.listestataffect=data;
+      this.StatDiscount();
+    });
+    this.api.get("/discount/statistiqueDiscountAmount").subscribe((data:any)=>{
+      this.listamount=data;
+      this.StatDiscount();
+    });
+  //  this.StatDiscount();
     this.getAllDiscounts();
     this.getProductWithoutDiscount();
    
@@ -74,8 +93,16 @@ product:product;
       $("#table").DataTable(this.dtOption);
     }, 300);*/
     
+
+     // Line chart:
+
+
+
     
   }
+
+
+
 
   getAllDiscounts(){
     this.api.get("/discount").subscribe(res=>this.listdiscount=res);
@@ -120,8 +147,10 @@ product:product;
 
   
   Deletediscount(id){
+    if (window.confirm('Are you sure, you want to delete?')){
     this.api.delete("/discount/"+id).subscribe();
     window.location.reload();
+  }
   }
 
   getProductWithoutDiscount(){
@@ -170,9 +199,8 @@ product:product;
     }
 
 
-    this.api.put("/discount/"+id,this.discount).subscribe();
-    console.log("updated");
-   // location.reload();
+    this.api.put("/discount/"+id,this.discount).subscribe(res=>this.listdiscount=res);
+
   }
 
 
@@ -192,5 +220,34 @@ product:product;
   }
 
 
+  StatDiscount(){
+
+
+
+
+// Bar chart:
+this.BarChart = new Chart('barChart', {
+  type: 'doughnut',
+  data: {
+    labels: this.listamount,
+    datasets: [
+      {
+        label: "Discount",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: this.listestataffect
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Number of affectation per Discount'
+    }
+  }
+
+});
+
+
+  }
 
 }

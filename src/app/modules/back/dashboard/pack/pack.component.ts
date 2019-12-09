@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { Pack_Product } from 'src/app/core/models/Pack_Product';
 import { product } from 'src/app/core/models/Product';
 import { Router } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-pack',
@@ -32,17 +33,32 @@ export class PackComponent implements OnInit {
       return this.packForm.controls;
       
     }
+
+    PackFormUpdate = new FormGroup({
+      'name':new FormControl('',[Validators.required]),
+      'StartDate':new FormControl('',[Validators.required]),
+      'EndDate':new FormControl('',[Validators.required]),
+      'ReductionAmount':new FormControl('',[Validators.required]),
+      'Description':new FormControl('',[Validators.required])
+  
+      });
+    
+
+
   listpack: Pack[];
   listproduct:product[];
   listpackproduct:Pack_Product[];
   listprice:Pack_Product[];
   pack:Pack;
   packproduct:Pack_Product;
-  
+  selectedPack:Pack;
+  closeResult: string;
+
 
   constructor(
     private api : ApiService,
-    private router:Router
+    private router:Router,
+    private modalService: NgbModal
     ) { }
 
   ngOnInit() {
@@ -98,7 +114,72 @@ export class PackComponent implements OnInit {
   }
 
   DeletePackProduct(id){
-    this.api.delete("/pack/"+id).subscribe();
+    this.api.delete("/packproducts/"+id).subscribe();
     window.location.reload();
+  }
+
+  open(content,i) {
+    this.selectedPack=this.listpack[i];
+    console.log(this.selectedPack);
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  updatePack(id){
+    this.pack=this.selectedPack;
+    this.pack.id=this.selectedPack.id;
+
+    if(this.PackFormUpdate.controls.name.value==""){
+      this.pack.id=this.selectedPack.id;
+    }
+    else{
+      this.pack.PackName =this.PackFormUpdate.controls.name.value;
+
+    }
+
+    if(this.PackFormUpdate.controls.StartDate.value==""){
+      this.pack.PackStartDate=this.selectedPack.PackStartDate;
+    }
+    else{
+      this.pack.PackStartDate=this.PackFormUpdate.controls.StartDate.value;
+
+    }
+
+    if(this.PackFormUpdate.controls.EndDate.value==""){
+      this.pack.PackEndDate=this.selectedPack.PackEndDate;
+    }
+    else{
+      this.pack.PackEndDate=this.PackFormUpdate.controls.EndDate.value;
+
+    }
+
+    
+    if(this.PackFormUpdate.controls.ReductionAmount.value==""){
+      this.pack.reduction_amount=this.selectedPack.reduction_amount;
+    }
+    else{
+      this.pack.reduction_amount=this.PackFormUpdate.controls.ReductionAmount.value;
+    }
+    if(this.PackFormUpdate.controls.Description.value==""){
+      this.pack.PackDescription=this.selectedPack.PackDescription;
+    }
+    else{
+      this.pack.PackDescription=this.PackFormUpdate.controls.Description.value;
+    }
+    this.api.put("/pack/"+id,this.pack).subscribe(res=>this.listpack=res);
+
   }
 }
