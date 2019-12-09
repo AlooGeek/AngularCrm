@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: 'pdf/:id', component:BillPdfComponent
   },
-  {path:'**', redirectTo:'404', pathMatch:'full'}
 ];
 
 @NgModule({
