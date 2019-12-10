@@ -8,4 +8,5 @@ export class Offer{
      OffEndDate:String;
      OffReduction_amount:number;
      OffDescription:String;
+     statusres:any;
 }
