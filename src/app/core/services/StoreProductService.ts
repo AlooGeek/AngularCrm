@@ -13,6 +13,7 @@ export class StoreProductService implements IStoreProduct{
   
   
   
+  
 
     /**
      *
@@ -49,6 +50,10 @@ export class StoreProductService implements IStoreProduct{
     AfficherStoreGROUPBYSTORE(): Observable<any> {
         return this.api.get("/storeproduct/groupstore");
     }
+    Statistique(): Observable<any> {
+       return this.api.get("/storeproduct/statistic");
+    }
+    
 
 
 

@@ -11,5 +11,6 @@ export interface IStoreProduct{
     AfficherParCritere(param:any,value:any):Observable<any>;
     AfficherStoreGROUPBYProduct(IdStore:any) : Observable<any>;
     AfficherStoreGROUPBYSTORE() : Observable<any>;
+    Statistique():Observable<any>;
 
 }

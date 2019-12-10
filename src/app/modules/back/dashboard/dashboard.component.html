@@ -118,66 +118,12 @@
                             Menu
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false"
-                                data-target="#submenu-1" aria-controls="submenu-1"><i
-                                    class="fa fa-fw fa-user-circle"></i>Dashboard <span
-                                    class="badge badge-success">6</span></a>
-                            <div id="submenu-1" class="collapse submenu" style="">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                                            data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
-                                        <div id="submenu-1-2" class="collapse submenu" style="">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="index.html">E Commerce Dashboard</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="ecommerce-product.html">Product List</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="ecommerce-product-single.html">Product
-                                                        Single</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="ecommerce-product-checkout.html">Product
-                                                        Checkout</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="dashboard-finance.html">Finance</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="dashboard-sales.html">Sales</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                                            data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
-                                        <div id="submenu-1-1" class="collapse submenu" style="">
-                                            <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="dashboard-influencer.html">Influencer</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="influencer-finder.html">Influencer
-                                                        Finder</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="influencer-profile.html">Influencer
-                                                        Profile</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            <a class="nav-link" href="/admin" ><i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                                data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-user"></i>Users-management</a>
+                                data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-user"></i>USERS-Management</a>
                             <div id="submenu-3" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
@@ -186,6 +132,19 @@
                                     <li class="nav-item">
                                         <a [routerLink]="['roles']" class="nav-link" href="#">Roles</a>
                                     </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                data-target="#submenu-5" aria-controls="submenu-5"><i
+                                    class="far fa-file-alt"></i>DOCUMENT-Management</a>
+                            <div id="submenu-5" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" [routerLink]="['doc']" href="pages/chart-c3.html">Manage</a>
+                                    </li>
+                                    
                                 </ul>
                             </div>
                         </li>
@@ -198,33 +157,21 @@
                             <li class="nav-item ">
                                 <a class="nav-link" routerLink="store" ><i class="fas fa-shopping-cart"></i>STORE-Management</a>
                             </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                                data-target="#submenu-5" aria-controls="submenu-5"><i
-                                    class="far fa-file-alt"></i>Document</a>
-                            <div id="submenu-5" class="collapse submenu" style="">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link" [routerLink]="['doc']" href="pages/chart-c3.html">Manage</a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                        </li>
+                    
 
                         <li class="nav-item ">
-                            <a class="nav-link" routerLink="discount"><i class="fas fa-percent"></i>Discount</a>
+                            <a class="nav-link" routerLink="discount"><i class="fas fa-percent"></i>DISCOUNT-Management</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" routerLink="offer"><i class="fas fa-donate"></i>Offer</a>
+                            <a class="nav-link" routerLink="offer"><i class="fas fa-donate"></i>OFFER-Management</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" routerLink="pack"><i class="fas fa-gift"></i>Pack</a>
+                            <a class="nav-link" routerLink="pack"><i class="fas fa-gift"></i>PACK-Management</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                 data-target="#submenu-7" aria-controls="submenu-7"><i
-                                    class="fab fa-rocketchat"></i>Forum</a>
+                                    class="fab fa-rocketchat"></i>FORUM-Management</a>
                             <div id="submenu-7" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
@@ -242,7 +189,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                 data-target="#submenu-8" aria-controls="submenu-8"><i
-                                    class="fas fa-fw fa-columns"></i>Claims</a>
+                                    class="fas fa-fw fa-columns"></i>CLAIMS-Management</a>
                             <div id="submenu-8" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
@@ -257,21 +204,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                                data-target="#submenu-9" aria-controls="submenu-9"><i
-                                    class="fas fa-fw fa-map-marker-alt"></i>Maps</a>
-                            <div id="submenu-9" class="collapse submenu" style="">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="pages/map-google.html">Google Maps</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="pages/map-vector.html">Vector Maps</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                 
 
                     </ul>
                 </div>

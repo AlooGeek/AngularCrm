@@ -221,10 +221,6 @@ listamount:[];
 
 
   StatDiscount(){
-
-
-
-
 // Bar chart:
 this.BarChart = new Chart('barChart', {
   type: 'doughnut',
