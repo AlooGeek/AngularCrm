@@ -1,6 +1,8 @@
 import { Component, OnInit,AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
 import { StoreProduct } from 'src/app/core/models/StoreProduct';
+import { Offer } from 'src/app/core/models/Offer';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 declare var paypal:any;
 @Component({
   selector: 'app-checkout',
@@ -10,6 +12,22 @@ declare var paypal:any;
 export class CheckoutComponent implements OnInit {
  
   listPanier:StoreProduct[]=[];
+
+  offer:Offer;
+
+  couponForm = new FormGroup({
+    'coupon':new FormControl('',[Validators.required]),
+    });
+
+  verifyCoupon(){
+    this.offer = new Offer();
+    this.api.get("/offer/checkOffer/"+this.couponForm.controls.coupon.value).subscribe(res=>{
+      this.offer=res;
+      console.log(this.offer);
+
+    });
+    //console.log(this.offer);
+  }
 
   @ViewChild('paypal') paypalElement :ElementRef;
 

@@ -57,16 +57,24 @@
                             <ng-container *ngFor="let sp of listPanier" >
                                 <li>{{sp.products.label}} <span *ngIf="sp.products.newprice==0;else other">{{sp.products.unitPrice}} DT</span> <ng-template #other><span> {{sp.products.newprice}} DT</span>   </ng-template></li>
                             </ng-container>
-                            </ul>
-                        
-                                                                 
+                            </ul>                             
                             <h4>Total <span>{{ total }} DT</span></h4>
-                            
                         </div>
-                        
                     </div>
-                                              
-                     
+                    <div class="discount-coupon">
+                        <h4>Offer Coupon Code</h4>
+                        <form  [formGroup]="couponForm">
+                            <div class="row">
+                                <div class="col-md-6 col-12 mb-25">
+                                    <input type="text" placeholder="Coupon Code" formControlName="coupon">
+                                </div>
+                                <div class="col-md-6 col-12 mb-25">
+                                    <input (click)="verifyCoupon()" type="submit" value="Apply Code">
+                                    {{offer?.OffReduction_amount}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                  </div>
                  
                  <div class="col-lg-5">
@@ -107,6 +115,7 @@
                          
                      </div>
                  </div>
+                 
                  
              </div>
           

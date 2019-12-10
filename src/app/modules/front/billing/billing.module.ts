@@ -5,7 +5,7 @@ import { TrackComponent } from './track/track.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { BillingComponent } from './billing.component';
 import { ManagementComponent } from './management/management.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BillPdfComponent } from './bill-pdf/bill-pdf.component';
 import { SortPipe } from './management/sort.pipe';
 import { UiService } from './management/ui.service';
@@ -20,6 +20,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CommonModule,
     BillingRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     Ng2SearchPipeModule ,
     NgxPaginationModule,
  
