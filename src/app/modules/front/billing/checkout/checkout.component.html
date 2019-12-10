@@ -55,7 +55,7 @@
 
                             <ul>
                             <ng-container *ngFor="let sp of listPanier" >
-                                <li>{{sp.products.label}} <span>{{sp.products.unitPrice}} DT</span></li>
+                                <li>{{sp.products.label}} <span *ngIf="sp.products.newprice==0;else other">{{sp.products.unitPrice}} DT</span> <ng-template #other><span> {{sp.products.newprice}} DT</span>   </ng-template></li>
                             </ng-container>
                             </ul>
                         
