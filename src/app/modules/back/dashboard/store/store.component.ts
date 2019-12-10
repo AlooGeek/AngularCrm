@@ -21,16 +21,22 @@ export class StoreComponent implements OnInit  {
   constructor(private servStore:StoreService,private modalService: NgbModal,private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,private servprod:ProductService,private servsp:StoreProductService) { }
 
-  listStores:Store[];
+  listStores:Store[]=[];
   store:Store;
   storeUpdate:Store;
   closeResult: string;
 
+
+
+
+
+  
+ 
   ngOnInit() {
     this.getAllStores();
     this.getAllProducts();
 
-    console.log(this.listStores);
+    
     
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -64,9 +70,37 @@ export class StoreComponent implements OnInit  {
     this.servprod.AfficherProduit().subscribe(res=>this.listproducts=res);
   }
 
+
+
+
+
+
+    /************ PAGINATION  */
+    page = 1;
+    pageSize = 25;
+    collectionSize = 0;
+  
+    get stores(): Store[] {
+      
+      return this.listStores
+        .map((Store, i) => ({id: i + 1, ...Store}))
+        .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+    }
+  /*************************** **************/
+
   getAllStores(){
-    this.servStore.AfficherStore().subscribe(res=>this.listStores=res);
+    this.servStore.AfficherStore().subscribe(res=>{
+      this.listStores=res;
+    
+      this.collectionSize= this.listStores.length;
+    
+    });
   }
+
+
+
+  
+
 
 // ******************************* ADD STORE ************************
   StoreForm = new FormGroup({
@@ -95,7 +129,17 @@ export class StoreComponent implements OnInit  {
 
 
       this.StoreForm.reset();
-      this.servStore.AjouterStore(this.store).subscribe(res=>this.listStores=res);
+      this.servStore.AjouterStore(this.store).subscribe(res=>{
+        
+        
+        
+        
+        this.listStores=res
+        
+        
+        
+        ;});
+      
 
 
 
@@ -290,11 +334,11 @@ export class StoreComponent implements OnInit  {
 
 
 storeafect:Store;
-listproducts:product[];
+listproducts:product[]=[];
 showstoreprod=true;
 prod:product=null;
 storeprod:StoreProduct;
-listStoreProduct:StoreProduct[];
+listStoreProduct:StoreProduct[]=[];
 
 open2(content2,s) {
 
