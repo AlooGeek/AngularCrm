@@ -88,45 +88,11 @@
                     <div class="main-menu">
                         <nav>
                             <ul>
-                                <li class="active"><a href="index.html">HOME</a></li>
-                                <li class="menu-item"><a href="/store">Shop</a>
-                                <li class="menu-item-has-children"><a href="#">PAGES</a>
-                                    <ul class="mega-menu three-column">
-                                        <li><a href="#">Column One</a>
-                                            <ul>
-                                                <li><a href="about-us.html">About us</a></li>
-                                                <li><a href="best-deals.html">Best Deals</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Column Two</a>
-                                            <ul>
-                                                <li><a href="compare.html">Compare</a></li>
-                                                <li><a href="faq.html">Faq</a></li>
-                                                <li><a href="feature.html">Feature</a></li>
-                                                <li><a href="login.html">Login</a></li>
-                                                <li><a href="register.html">Register</a></li>
-                                                <li><a href="store.html">Store</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Column Three</a>
-                                            <ul>
-                                                <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                                                <li><a href="track-order.html">Track Order</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="blog-1-column-left-sidebar.html">BLOG</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-1-column-left-sidebar.html">Blog 1 Column Left Sidebar</a>
-                                        </li>
-                                        <li><a href="single-blog-left-sidebar.html">Single Blog Left Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">CONTACT</a></li>
+                                <li class="active"><a href="#">HOME</a></li>
+                                <li class="menu-item"><a href="/store">SHOP</a>
+                                <li class="menu-item"><a href="#">BILLING</a> </li>
+                                <li class="menu-item"><a href="#">BLOG</a></li>
+                                <li class="menu-item"><a href="#">CONTACT</a></li>
                             </ul>
                         </nav>
                     </div><!-- Main Menu End -->
@@ -165,7 +131,7 @@
 
                 <div *ngIf="!listPanierstore;else cart">
                         <h1 style="text-align: center;"> YOUR CART IS EMPTY!  </h1>
-                        <h4 style="text-align: center;"><a (click)="modal.close('Save click')" >ADD Products to my CART <i class="fa fa-cart-plus"></i></a> </h4>  
+                        
                         
                        </div>
     
@@ -199,7 +165,9 @@
                                <td><img [src]='"assets/images/product/"+sp.products.imageUrl+""' width="70" height="60">  </td>
                                <td>{{sp.products.category.name}} </td>
                                <td>{{sp.products.label}}</td>
-                                <td>{{sp.products.unitPrice}} DT</td>
+                               <td *ngIf="sp.products.newprice==0;else new">{{sp.products.unitPrice}} DT</td>
+                               <ng-template #new> <td> <s> {{sp.products.unitPrice}} DT </s> <br> {{sp.products.newprice}} DT</td>  </ng-template>
+                         
                                <td><button class="btn btn-danger" (click)="delete(i)" > <i class="fa fa-trash-o"></i> Delete</button></td>
                                
                                
