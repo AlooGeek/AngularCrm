@@ -65,7 +65,13 @@ calculTotal(){
   let i=0;
   let j=0
 for (j=0; j<this.listPanier.length;j++){
+
+  if (this.listPanier[i]['products']['newprice']!=0){
+    this.total = this.total+this.listPanier[i]['products']['newprice'];
+
+  }else{ 
   this.total = this.total+this.listPanier[i]['products']['unitPrice'];
+    }
   i++;
 }
 }
