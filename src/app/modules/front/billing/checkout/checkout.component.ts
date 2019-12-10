@@ -95,6 +95,8 @@ getQuote(){
 }
 total:number =0;
 calculTotal(){
+ this.api.put("/offer/UpdateScore/"+localStorage.getItem('username')).subscribe();
+ //console.log(localStorage.getItem('username'));
   let i=0;
   let j=0
 for (j=0; j<this.listPanier.length;j++){
