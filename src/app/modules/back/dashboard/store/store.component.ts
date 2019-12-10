@@ -104,8 +104,24 @@ export class StoreComponent implements OnInit  {
   // ******************************** END ADD STORE ******************************  
 
  //********************** DELETE STORE *****************
+
+ rslt:any="";
     delete(id){
-        this.servStore.SupprimerStore(id).subscribe(res=>this.listStores=res);
+      if (window.confirm('Are you sure, you want to delete?')){
+        this.servStore.SupprimerStore(id).subscribe(res=>{
+          
+          this.listStores=res;
+
+          this.rslt=res;
+ 
+          if(this.rslt.statusres!=undefined){
+          alert(this.rslt.statusres);
+          }
+          
+        });
+
+
+      }
     }
    // ************************* END DELETE STORE *************** 
 

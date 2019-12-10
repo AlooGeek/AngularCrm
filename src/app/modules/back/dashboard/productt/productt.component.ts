@@ -16,7 +16,7 @@ import { CategoryService } from 'src/app/core/services/CategoryService';
 export class ProducttComponent implements OnInit {
 
 
-  listProduct: product[];
+  listProduct: product[]=[];
   listCategory: Category[];
   idcat:number;
   p:product;
@@ -96,12 +96,24 @@ export class ProducttComponent implements OnInit {
   
   }
 
+  
+  rslt:any="";
 
   delete(idpro){
     
     if (window.confirm('Are you sure, you want to delete?')){
     
-    this.servprod.SupprimerProduit(idpro).subscribe(res=> this.listProduct=res);
+    this.servprod.SupprimerProduit(idpro).subscribe(res=>{ 
+   
+      this.listProduct=res;
+      this.rslt=res;
+ 
+      if(this.rslt.statusres!=undefined){
+      alert(this.rslt.statusres);
+      }
+    
+    });
+    
 
     }
 

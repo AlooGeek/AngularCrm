@@ -1,7 +1,7 @@
 import { Category } from './Category';
 
 export class product {
-    
+
     public id : number;
 	public label: String ;
 	public imageUrl : any ;
@@ -11,6 +11,7 @@ export class product {
 	public newprice :any;
 	public disponible : number;
 	public category : Category;
+	public statusres: any;
 
 
 }
