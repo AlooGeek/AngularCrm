@@ -53,10 +53,22 @@ export class CategoryComponent implements OnInit {
 
   }
 
-
+  rslt:any="";
   delete(id){
+    if (window.confirm('Are you sure, you want to delete?')){
+    this.servCategory.SupprimerCategory(id).subscribe(res=>{
+      
+      this.listCategory=res;
+      this.rslt=res;
+ 
+      if(this.rslt.statusres!=undefined){
+      alert(this.rslt.statusres);
+      }
+    
+    
+    });
 
-    this.servCategory.SupprimerCategory(id).subscribe(res=>this.listCategory=res);
+    }
 
   }
 
