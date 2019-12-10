@@ -23,20 +23,97 @@ export class DocumentComponent implements OnInit {
   LineChart=[];
   BarChart=[];
   PieChart=[];
+  listDocs:[];
  
   constructor(private api:ApiService,private docservice : DocumentService ) { }
 
   ngOnInit() {
 
-  this.api.get("/Document/getAll").subscribe(data => this.docs=data);
+  this.api.get("/Document/getAll").subscribe(
+    data =>{ this.docs=data;
+    this.charts();
+  }
+    );
 
+  }
+  
+
+  delete (id) {
+    if (window.confirm('Are you sure, you want to delete?')){
+      this.api.delete("/Document/delete?id="+id).subscribe(data => {
+        location.reload();
+      } ,(err)=>{
+        console.log(err);
+      })
+    }
+  } 
+  
+  add (form){
+
+    if(this.document.id ==null){
+      this.api.post("/Document/add").subscribe(data =>{
+        location.reload();
+      }, (err)=>{
+        console.log(err);
+      });
+    }else{
+      this.api.put("/Document/update",this.document).subscribe( data => {
+         location.reload();
+        }, (err)=>{
+          console.log(err);
+        });     
+    }
+
+  }
+  
+
+  edit(document) {
+    this.document = document;
+  }
+
+  validate(idDoc,idPrd,qte){
+    
+    this.api.post("/Document/validaterequest?idDoc="+idDoc+"&idProd="+idPrd+"&qte="+qte)
+      .subscribe(data =>{
+        location.reload();
+      },(err)=>{
+        console.log(err);
+      });
+    }
+  
+
+  track(id){
+    this.api.post("/Document/track?id="+id).subscribe(
+      data => {
+this.res=data["statusres"];
+      }
+    );
+
+  }
+
+  downloadPdf(){
+    const options = {
+      filename : 'listDocs.pdf',
+      html2canvas : {type: 'png'},
+      jsPDF: { orientation : 'landscape'}
+    }; 
+    const content: Element = document.getElementById('pdfcontent');
+    html2pdf()
+    .from(content)
+    .set(options)
+    .save();
+    }
+
+
+    charts(){
+      
   this.LineChart = new Chart('lineChart', {
     type: 'line',
   data: {
    labels: ["Jan", "Feb", "March", "April", "May", "June","July","Aug","Sep","Oct","Nov","Dec"],
    datasets: [{
        label: 'Number of Items Sold in Months',
-       data: this.docs,
+       data: [0,0,0,0,0,0,0,0,0,0,0,6],
        fill:false,
        lineTension:0.2,
        borderColor:"red",
@@ -63,10 +140,10 @@ export class DocumentComponent implements OnInit {
 this.BarChart = new Chart('barChart', {
   type: 'bar',
 data: {
- labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+ labels: ["Samsung A30", "iPhone Xs"],
  datasets: [{
-     label: '# of Votes',
-     data: [10,2 ],
+     label: '# of sells',
+     data: [4,2 ],
      backgroundColor: [
          'rgba(255, 99, 132, 0.2)',
          'rgba(54, 162, 235, 0.2)',
@@ -143,76 +220,6 @@ options: {
 }
 });
 
-
-  }
-  
-
-  delete (id) {
-    if (window.confirm('Are you sure, you want to delete?')){
-      this.api.delete("/Document/delete?id="+id).subscribe(data => {
-        location.reload();
-      } ,(err)=>{
-        console.log(err);
-      })
-    }
-  } 
-  
-  add (form){
-
-    if(this.document.id ==null){
-      this.api.post("/Document/add").subscribe(data =>{
-        location.reload();
-      }, (err)=>{
-        console.log(err);
-      });
-    }else{
-      this.api.put("/Document/update",this.document).subscribe( data => {
-         location.reload();
-        }, (err)=>{
-          console.log(err);
-        });     
-    }
-
-  }
-  
-
-  edit(document) {
-    this.document = document;
-  }
-
-  validate(idDoc,idPrd,qte){
-    
-    this.api.post("/Document/validaterequest?idDoc="+idDoc+"&idProd="+idPrd+"&qte="+qte)
-      .subscribe(data =>{
-        this.res=data["statusres"];
-        console.log(this.res);
-        location.reload();
-      },(err)=>{
-        console.log(err);
-      });
-    }
-  
-
-  track(id){
-    this.api.post("/Document/track?id="+id).subscribe(
-      data => {
-this.res=data["statusres"];
-      }
-    );
-
-  }
-
-  downloadPdf(){
-    const options = {
-      filename : 'listDocs.pdf',
-      html2canvas : {type: 'png'},
-      jsPDF: { orientation : 'landscape'}
-    }; 
-    const content: Element = document.getElementById('pdfcontent');
-    html2pdf()
-    .from(content)
-    .set(options)
-    .save();
     }
 
 }
