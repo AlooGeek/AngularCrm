@@ -12,15 +12,16 @@ export class TrackComponent implements OnInit {
   doc = new Doc();
   res:string;
   paramurl: any;
-  id:any = this.ar.paramMap.subscribe(
-    result=> this.paramurl=result.get('id'));
+  id;
   @ViewChild('content') content: ElementRef;
   constructor(private api:ApiService,private ar:ActivatedRoute) { }
   ngOnInit() {
     this.res;
     this.ar.paramMap.subscribe(
-      result=> this.paramurl=result.get('id'));
-      console.log(this.id[0]);
+      result=> {this.paramurl=result.get('id')
+      this.id = this.paramurl;
+    });
+
 
   }
 

@@ -392,8 +392,12 @@
                                <td>{{sp.stores.name}}</td>
                                <td><img [src]='"assets/images/product/"+sp.products.imageUrl+""' width="70" height="60">  </td>
                                <td>{{sp.products.category.name}} </td>
+                               
                                <td>{{sp.products.label}}</td>
-                                <td>{{sp.products.unitPrice}} DT</td>
+                       
+                                <td *ngIf="sp.products.newprice==0;else new">{{sp.products.unitPrice}} DT</td>
+                                <ng-template #new> <td> <s> {{sp.products.unitPrice}} DT </s> <br> {{sp.products.newprice}} DT</td>  </ng-template>
+                          
                                <td><button class="btn btn-danger" (click)="delete(i)" > <i class="fa fa-trash-o"></i> Delete</button></td>
                                
                                

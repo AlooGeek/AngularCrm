@@ -36,6 +36,7 @@ export class ProductsComponent implements OnInit {
 
 
     this.listPanierstore = JSON.parse(localStorage.getItem("panier"));
+
   }
 
   CategForm = new FormGroup({

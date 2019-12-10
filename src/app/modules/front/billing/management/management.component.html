@@ -70,7 +70,7 @@
 
                             <!-- Product Pages -->
                             <div class="product-pages">
-                                <p>Pages 1 of 25</p>
+                                <p>Pages 1 of 2</p>
                             </div>
 
                         </div><!-- Shop Top Bar End -->
@@ -80,7 +80,7 @@
                 
                 <!-- Shop Product Wrap Start -->
                 <!-- Shop Product Wrap Start -->
-                <ng-container *ngFor="let doc of docs |  paginate: { itemsPerPage: 10, currentPage: p } |filter:searchText; ">
+                <ng-container *ngFor="let doc of docs |  paginate: { itemsPerPage: 5, currentPage: p } |filter:searchText; ">
 
                 <div class="shop-product-wrap list row">
                     
@@ -106,8 +106,7 @@
                                 <div class="left-content">
                                     <div class="actions">
                                         <h4>Actions</h4>
-                                        <a  style="margin-left: 10px;"  class="place-order" (click)="request()"><i class=""></i><span>Request</span></a>
-                                        <a style="margin-left: 10px;background-color: cadetblue; border-color:cadetblue;" [routerLink]="['/billing/track',doc.id]" class="place-order"><i class=""></i><span>Track</span></a>
+                                        <a style="margin-left: 10px;" [routerLink]="['/billing/track',doc.id]" class="place-order"><i class=""></i><span>Track</span></a>
                                         <a  style="margin-left: 10px;background-color: grey;border-color: grey;" (click)="cancel(doc.id)" class="place-order"><i class=""></i><span>Cancel</span></a>
                                     </div>
                                     
