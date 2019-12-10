@@ -19,7 +19,7 @@ export class PackComponent implements OnInit {
     'name':new FormControl('',[Validators.required]),
     'StartDate':new FormControl('',[Validators.required]),
     'EndDate':new FormControl('',[Validators.required]),
-    'ReductionAmount':new FormControl('',[Validators.required]),
+    'ReductionAmount':new FormControl('',[Validators.required,Validators.min(1),Validators.max(100)]),
     'Description':new FormControl('',[Validators.required])
 
     });
@@ -43,7 +43,10 @@ export class PackComponent implements OnInit {
   
       });
     
-
+      get packfupdate(){
+        return this.PackFormUpdate.controls;
+        
+      }
 
   listpack: Pack[];
   listproduct:product[];

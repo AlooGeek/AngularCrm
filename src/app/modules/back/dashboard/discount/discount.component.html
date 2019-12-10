@@ -107,25 +107,50 @@
                              <div class="form-group">
                                 <label for="inputText3" class="col-form-label" >discount Name</label>
                                 <input type="text" class="form-control" id="exampleFormControlFile1" formControlName="name" >
-                             </div>
+                                <div *ngIf="discountd.name.touched && discountd.name.invalid">
+                                        <div *ngIf="discountd.name.errors.required" class="alert alert-danger">
+                                         <i class="fas fa-minus-circle"></i> Pack Name Is Required!
+                                        </div>
+                                        </div>
+                            </div>
                    
                             <div class="form-group">
                                     <label for="inputText9" class="col-form-label" >Start Date</label>
                                     <input type="date" class="form-control" id="exampleFormControlFile9" formControlName="StartDate" >
-                            </div>
+                                    <div *ngIf="discountd.StartDate.touched && discountd.StartDate.invalid">
+                                            <div *ngIf="discountd.StartDate.errors.required" class="alert alert-danger">
+                                             <i class="fas fa-minus-circle"></i> Start Date Is Required!
+                                            </div>
+                                            </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="inputText9" class="col-form-label" >End Date</label>
                                     <input type="date" class="form-control" id="exampleFormControlFile9" formControlName="EndDate" >
+                                    <div *ngIf="discountd.EndDate.touched && discountd.EndDate.invalid">
+                                            <div *ngIf="discountd.EndDate.errors.required" class="alert alert-danger">
+                                             <i class="fas fa-minus-circle"></i> End Date Is Required!
+                                            </div>
+                                            </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputText9" class="col-form-label" >Reduction amount</label>
                                     <input type="number" class="form-control" id="exampleFormControlFile9" formControlName="ReductionAmount" >
+                                    <div *ngIf="discountd.ReductionAmount.touched && discountd.ReductionAmount.invalid">
+                                            <div *ngIf="discountd.ReductionAmount.errors.required" class="alert alert-danger">
+                                             <i class="fas fa-minus-circle"></i> Reduction amount Is Required!
+                                            </div>
+                                            </div>
                                 </div>
             
                                 <div class="form-group">
                                     <label for="inputText9" class="col-form-label" >Description</label>
                                     <input type="text" class="form-control" id="exampleFormControlFile9" formControlName="Description" >
+                                    <div *ngIf="discountd.Description.touched && discountd.Description.invalid">
+                                            <div *ngIf="discountd.Description.errors.required" class="alert alert-danger">
+                                             <i class="fas fa-minus-circle"></i> Description Is Required and must be > 1!
+                                            </div>
+                                            </div>
                                 </div>
                           
                            

@@ -148,6 +148,11 @@
                            <div class="form-group">
                               <label for="inputText3" class="col-form-label" >Pack Name</label>
                               <input type="text" class="form-control" id="exampleFormControlFile1" formControlName="name" >
+                              <div *ngIf="packf.name.touched && packf.name.invalid">
+                                    <div *ngIf="packf.name.errors.required" class="alert alert-danger">
+                                     <i class="fas fa-minus-circle"></i> Pack Name Is Required!
+                                    </div>
+                                    </div>
                            </div>
                   
                           <div class="form-group">
@@ -161,12 +166,22 @@
                               </div>
                               <div class="form-group">
                                   <label for="inputText9" class="col-form-label" >Reduction amount</label>
-                                  <input type="number" class="form-control" id="exampleFormControlFile9" formControlName="ReductionAmount" >
+                                  <input type="number" class="form-control" id="exampleFormControlFile9" formControlName="ReductionAmount" min="0">
+                                  <div *ngIf="packf.ReductionAmount.touched && packf.ReductionAmount.invalid">
+                                        <div *ngIf="packf.ReductionAmount.errors.required" class="alert alert-danger">
+                                         <i class="fas fa-minus-circle"></i>Reduction Amount is Required and should be more than 1%
+                                        </div>
+                                </div>
                               </div>
           
                               <div class="form-group">
                                   <label for="inputText9" class="col-form-label" >Description</label>
                                   <input type="text" class="form-control" id="exampleFormControlFile9" formControlName="Description" >
+                                  <div *ngIf="packf.Description.touched && packf.Description.invalid">
+                                        <div *ngIf="packf.Description.errors.required" class="alert alert-danger">
+                                         <i class="fas fa-minus-circle"></i>Description is Required
+                                        </div>
+                                </div>
                               </div>
                         
                          
@@ -254,6 +269,7 @@
                             <div class="form-group">
                                <label for="inputText3" class="col-form-label" >Pack Name</label>
                                <input type="text" class="form-control" id="exampleFormControlFile1" formControlName="name" value={{selectedPack.PackName}}>
+                            
                             </div>
                    
                            <div class="form-group">
