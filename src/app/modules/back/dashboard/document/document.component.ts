@@ -20,9 +20,9 @@ export class DocumentComponent implements OnInit {
  types:any=['quote','bill','command']
   res;
   date;
-  LineChart=[];
-  BarChart=[];
-  PieChart=[];
+  LineChart:any=[];
+  BarChart:any=[];
+  PieChart:any=[];
  
   constructor(private api:ApiService,private docservice : DocumentService ) { }
 
