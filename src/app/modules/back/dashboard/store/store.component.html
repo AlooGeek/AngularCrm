@@ -10,21 +10,21 @@
                   <table class="table table-striped table-bordered first" id="list">
                       <thead>
                           <tr>
-                              <th>Name</th>
-                              <th>Ville</th>
-                              <th>Email</th>
-                              <th>Address</th>
-                              <th>Phone-Number</th>
-                              <th><i class="fas fa-edit"></i> Update</th>
-                              <th><i class="fas fa-trash-alt"> </i> Delete</th>
-                              <th>Affectation</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">City</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Address</th>
+                              <th scope="col">Phone-Number</th>
+                              <th scope="col"><i class="fas fa-edit"></i> Update</th>
+                              <th scope="col"><i class="fas fa-trash-alt"> </i> Delete</th>
+                              <th scope="col">Affectation</th>
                              
                           </tr>
                       </thead>
-                      <tbody *ngFor="let s of listStores" >
+                      <tbody *ngFor="let s of stores" >
 
                           <tr> 
-                                 <td  class="affectprod" (click)="openLg3(content3,s.id)" style="text-align: center;"><img src="../../../../../assets/images/shop.jpg" width="150px" height="100px"> <br> {{s.name}}</td>
+                                 <td scope="row" class="affectprod" (click)="openLg3(content3,s.id)" style="text-align: center;"><img src="../../../../../assets/images/shop.jpg" width="150px" height="100px"> <br> {{s.name}}</td>
                                  <td>{{s.ville}}</td> 
                                  <td>{{s.email}} </td> 
                                  <td>{{s.address}}</td> 
@@ -52,6 +52,16 @@
                           </tr>
                       </tfoot>
                   </table>
+                  <div class="d-flex justify-content-between p-2">
+                      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+                      </ngb-pagination>
+                    
+                      <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+                        <option [ngValue]="25">25 items per page</option>
+                        <option [ngValue]="50">50 items per page</option>
+                        <option [ngValue]="100">100 items per page</option>
+                      </select>
+                    </div>
               </div>
           </div>
       </div>
@@ -193,7 +203,7 @@
           
                         <div class="form-group">
                           <label>Enter address</label>
-                          <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" value="{{address}}"  autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+                          <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" value="{{address}}"  autocorrect="on" autocapitalize="on" spellcheck="on" type="text" #search>
                         </div>
                        
                         <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
@@ -227,6 +237,7 @@
                               <thead>
                                   <tr>
                                       <th>Name</th>
+                                      <th>City</th>
                                       <th>Location</th>
                                       
                                   </tr>
@@ -235,6 +246,7 @@
   
                                   <tr> 
                                          <td>{{s.name}}</td>
+                                         <td>{{s.ville}}</td>
                                          <td style="text-align: center;"><button class="btn btn-brand"  (click)="open1(content1,s)"><i class="fas fa-map-marker-alt"></i> View Location</button> </td>
                                          
                                   </tr>
@@ -243,6 +255,7 @@
                               <tfoot>
                                   <tr>
                                     <th>Name</th>
+                                    <th>City</th>
                                       <th>Location</th>
                                   </tr>
                               </tfoot>

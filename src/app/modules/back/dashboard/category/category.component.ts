@@ -12,7 +12,12 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class CategoryComponent implements OnInit {
 
 
-  listCategory :Category[];
+
+
+
+
+  
+  listCategory :Category[]=[];
   category:Category =null;
   closeResult: string;
   categoryUpdate:Category;
@@ -23,6 +28,21 @@ export class CategoryComponent implements OnInit {
     this.getAllCategory();
   }
 
+
+
+
+   /************ PAGINATION  */
+  page = 1;
+  pageSize = 25;
+  collectionSize = 0;
+
+  get categories(): Category[] {
+    
+    return this.listCategory
+      .map((Category, i) => ({id: i + 1, ...Category}))
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+/*************************** **************/
 
   
   CategoryForm = new FormGroup({
@@ -35,7 +55,13 @@ export class CategoryComponent implements OnInit {
 
 
   getAllCategory(){
-    return this.servCategory.AfficherCategory().subscribe(res=>this.listCategory=res);
+    return this.servCategory.AfficherCategory().subscribe(res=>{
+      
+      this.listCategory=res;
+      this.collectionSize= this.listCategory.length;
+      
+      
+   });
   }
 
 

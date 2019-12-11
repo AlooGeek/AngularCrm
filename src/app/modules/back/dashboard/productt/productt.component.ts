@@ -17,7 +17,7 @@ export class ProducttComponent implements OnInit {
 
 
   listProduct: product[]=[];
-  listCategory: Category[];
+  listCategory: Category[]=[];
   idcat:number;
   p:product;
   prodUpdate:product;
@@ -61,9 +61,27 @@ export class ProducttComponent implements OnInit {
 
   getAllProduct(){
 
-    return this.servprod.AfficherProduit().subscribe(res=> this.listProduct=res);
+    return this.servprod.AfficherProduit().subscribe(res=> {
+      this.listProduct=res;
+      this.collectionSize= this.listProduct.length;
+    });
 
   }
+
+
+
+     /************ PAGINATION  */
+     page = 1;
+     pageSize = 25;
+     collectionSize = 0;
+   
+     get products(): product[] {
+       
+       return this.listProduct
+         .map((product, i) => ({id: i + 1, ...product}))
+         .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+     }
+   /*************************** **************/
 
   getAllCategory(){
     this.servCategory.AfficherCategory().subscribe(res=> this.listCategory=res);

@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryComponent } from '../category/category.component';
+import { NgbdSortableHeader } from './sortable.directive';
+
 
 @NgModule({
-  declarations: [CategoryComponent],
+ 
   imports: [
     CommonModule,
     CategoryRoutingModule
-  ]
+  ],
+  declarations: [NgbdSortableHeader,CategoryComponent],
+ 
 })
 export class CategoryModule { }
